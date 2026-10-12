@@ -69,8 +69,8 @@
           </summary>
           <div class="toc-menu">
             <a href="#step-1">Step 1: Turn on email alerts from your banks</a>
-            <a href="#step-2">Step 2: Create the sheet</a>
-            <a href="#step-3">Step 3: Get your free Gemini API key</a>
+            <a href="#step-2">Step 2: Get your free Gemini API key</a>
+            <a href="#step-3">Step 3: Create the sheet and run setup</a>
             <a href="#done">You're done</a>
             <a href="#code">Code</a>
           </div>
@@ -87,11 +87,14 @@
         </div>
       </div>
 
-      <p>Your banks already email you every time you spend. This script reads those emails and logs the expense for you, automatically, every hour. This gets more tedious the more banks/cards you juggle, which is exactly the case it's built for. Follow the one-time setup steps below exactly and you'll be done in about 5 minutes.</p>
+      <p>Your banks already email you every time you spend. This script reads those emails and logs the expense for you, automatically, every hour. This gets more tedious the more banks/cards you juggle, which is exactly the case it's built for.</p>
+      <p>You'll need a Gmail account (the one your bank alerts go to) and about 5 minutes. There are three steps: turn on bank emails, grab a free API key, then paste one script and click Run. The script builds the whole sheet, starts the hourly scan, and does the first scan for you.</p>
 
       <section id="step-1">
         <h2>Step 1: Turn on email alerts from your banks <a class="anchor" href="#step-1" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
-        <p>This only works if your banks actually <b>email</b> you when you spend. Most send SMS or push notifications by default, so email is usually a separate toggle you need to turn on first. Do this for every bank/card you want tracked.</p>
+        <p>This only works if your banks actually <b>email</b> you when you spend. Most send SMS or push notifications by default, so email is usually a separate toggle you need to turn on first. <b>Only do the banks and cards you actually use.</b></p>
+        <details class="fold">
+        <summary>Show the bank links</summary>
         <ul class="plain">
         <li><b>DBS</b> (digibank / cards): <a href="https://www.dbs.com.sg/personal/support/bank-ibanking-notification-alerts.html">dbs.com.sg/personal/support/bank-ibanking-notification-alerts.html</a></li>
         <li><b>DBS PayLah!</b>: <a href="https://www.dbs.com.sg/personal/support/bank-ssb-paylah-manage-notifications.html">dbs.com.sg/personal/support/bank-ssb-paylah-manage-notifications.html</a></li>
@@ -104,42 +107,38 @@
         <li><b>Maybank</b>: <a href="https://www.maybank2u.com.sg/en/personal/banking-services/self-service/digital-services-guide/banking/payment-transfer-alerts.page">maybank2u.com.sg/en/personal/banking-services/self-service/digital-services-guide/banking/payment-transfer-alerts.page</a></li>
         <li><b>MariBank</b>: <a href="https://www.maribank.sg/help-centre/article/10028-how-can-i-manage-my-notifications-and-alerts-preferences">maribank.sg/help-centre/article/10028</a></li>
         </ul>
+        </details>
         <p>Don't skip this! if your bank isn't emailing you, there's nothing for the script to read.</p>
       </section>
 
       <section id="step-2">
-        <h2>Step 2: Create the sheet <a class="anchor" href="#step-2" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
-        <ol class="plain">
-        <li>Type <b>sheet.new</b> into your browser's address bar. This opens a blank Google Sheet.</li>
-        <li>Click <b>Extensions → Apps Script</b>.</li>
-        <li>Delete the placeholder code that's already there (<code class="inline">function myFunction() { }</code>).</li>
-        <li>Copy the full script from the code block at the bottom of this page, there's a copy icon in the top-right corner.</li>
-        <li>Paste it in, then click the save icon (💾).</li>
-        <li>In the function dropdown at the top (next to Debug), select <b>initializeSetupSheet</b>.</li>
-        <li>Click <b>Run</b>.</li>
-        <li>A popup will appear. Click <b>Review permissions</b>.</li>
-        <li>You'll see a "Google hasn't verified this app" warning. Click <b>Advanced</b>, then <b>Go to [project name] (unsafe)</b>. This warning shows up for any personal script that hasn't been submitted to Google's app store (<b>it's safe, don't worry).</b></li>
-        <li>Click <b>Select all</b>, then <b>Continue</b> to allow the permissions. The script only needs this to read your Gmail and edit this one Sheet. It can't send or delete anything.</li>
-        <li>The script will run and you'll see "Execution started" in the log at the bottom.</li>
-        <li>Go back to your Google Sheet. You'll now see a <b>Setup</b> tab has been created. </li>
-        </ol>
-        <p class="tip">Take a moment to edit the Expense Categories list and set a budget for any category you want to track. </p>
-      </section>
-
-      <section id="step-3">
-        <h2>Step 3: Get your free Gemini API key <a class="anchor" href="#step-3" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <h2>Step 2: Get your free Gemini API key <a class="anchor" href="#step-2" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
         <p>This is what actually reads your bank emails and figures out the amount, category, and merchant, no matter which bank sent it.</p>
         <ol class="plain">
         <li>Go to <b>aistudio.google.com/apikey</b>.</li>
         <li>Click <b>Create API key</b>.</li>
         <li>If prompted, choose <b>Create project</b>.</li>
         <li>Once the project is created, click <b>Create key</b>.</li>
-        <li>Click <b>Copy key</b>.</li>
-        <li>Go back to your Sheet, and paste the key into cell <b>B3</b> on the Setup tab.</li>
-        <li>Refresh the sheet, then click the <b>Expense Tracker</b> menu → <b>3. Start Hourly Auto-Scan</b>.</li>
         </ol>
-        <p>From this moment on, any new payment email that arrives gets logged automatically and you don't need to do anything else.</p>
-        <p class="tip">This won't reach back and log everything already sitting in your inbox. Click <b>Expense Tracker → (Manual Test) Scan Now</b> once and it'll pick up any expenses in your emails from within the last 2 days.</p>
+        <p class="tip">Leave this tab open. You'll copy the key in Step 3, after your clipboard has been used for the script.</p>
+      </section>
+
+      <section id="step-3">
+        <h2>Step 3: Create the sheet and run setup <a class="anchor" href="#step-3" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <ol class="plain">
+        <li>Type <b>sheet.new</b> into your browser's address bar. This opens a blank Google Sheet.</li>
+        <li>Click <b>Extensions → Apps Script</b>.</li>
+        <li>Delete the placeholder code that's already there (<code class="inline">function myFunction() { }</code>).</li>
+        <li>Copy the full script: <button type="button" class="copy inline-copy" data-target="script">Copy</button> (it's also in the Code section at the bottom of this page).</li>
+        <li>Paste it in, then click the save icon (💾).</li>
+        <li>In the function dropdown at the top (next to Debug), select <b>setup</b>, then click <b>Run</b>.</li>
+        <li>A popup will appear. Click <b>Review permissions</b>.</li>
+        <li>You'll see a "Google hasn't verified this app" warning. Click <b>Advanced</b>, then <b>Go to [project name] (unsafe)</b>. This warning shows up for any personal script that hasn't been submitted to Google's app store (<b>it's safe, don't worry).</b></li>
+        <li>Click <b>Select all</b>, then <b>Continue</b> to allow the permissions. The script only needs this to read your Gmail and edit this one Sheet. It can't send or delete anything.</li>
+        <li>Switch back to your <b>Google Sheet</b> tab. A popup there asks for your Gemini API key. Go to the AI Studio tab from Step 2, click <b>Copy key</b>, paste it into the popup, and click <b>OK</b>.</li>
+        <li>Wait for the <b>Setup complete</b> popup. That's the sheet built, the hourly scan switched on, and the first scan finished.</li>
+        </ol>
+        <p class="tip">Take a moment to edit the Expense Categories list on the Setup tab and set a budget for any category you want to track.</p>
       </section>
 
       <section id="done">
@@ -148,7 +147,17 @@
         <p class="tip">Do not add any new columns in the monthly tab. Feel free to edit the code however you like to allow for this.</p>
         <ul class="plain">
         <li>The Setup tab already comes pre-filled with sender addresses for DBS, UOB, OCBC, HSBC, Citibank, Trust Bank, Standard Chartered, Maybank, and MariBank, so most people won't need to touch that field. If your bank isn't one of these, add its notification address there.</li>
+        <li>Setup scans the last 2 days of email straight away, so you'll usually see some rows immediately. It can't reach back further than that.</li>
         <li>If something looks off after you paste in an update, use the <b>Expense Tracker → Create This Month's Tab</b> menu item. It's always safe to click and never deletes your existing rows.</li>
+        <li>Updating from an older version? Paste the new code over the old one and run <b>setup</b> again. It keeps your categories, budgets and senders, and moves an API key you previously pasted into cell B3 into private storage.</li>
+        </ul>
+        <h3>If nothing is being logged</h3>
+        <ul class="plain">
+        <li>Check cell <b>D3</b> on the Setup tab. Any problem the last scan hit (a wrong API key, Gemini rate limits) is written there, and the affected emails are retried on the next scan.</li>
+        <li>Open Gmail and search for your bank's name. If its alert emails aren't arriving, go back to Step 1 for that bank.</li>
+        <li>Wrong or expired key? Click <b>Expense Tracker → Update Gemini API Key</b>. It saves the new one and re-runs the scan.</li>
+        <li>The free Gemini tier has rate limits. If you see a "429" or "quota" message, wait for the next hourly scan.</li>
+        <li>Check <b>B64</b> and <b>B65</b> on the Setup tab to see when the last scan ran and how many expenses it added.</li>
         </ul>
       </section>
 
@@ -167,9 +176,9 @@
  *
  * SETUP: See Guide above. Short version —
  *   1. Paste this whole code into Extensions &gt; Apps Script.
- *   2. Run `initializeSetupSheet` once, authorize it.
- *   3. Paste your free Gemini API key into the Setup tab.
- *   4. Menu: Expense Tracker &gt; Start Hourly Auto-Scan.
+ *   2. Run `setup` once and authorize it.
+ *   3. Paste your free Gemini API key when the popup asks for it.
+ *   That's it: setup also starts the hourly scan and runs the first one.
  * ============================================================
  */
 
@@ -177,7 +186,12 @@
 const SETUP_SHEET_NAME    = 'Setup';
 const PROCESSED_LOG_SHEET = 'ProcessedLog';
 
-const GEMINI_KEY_CELL = 'B3';
+// The Gemini key lives in Script Properties (private to the script), not in
+// the sheet, so sharing the sheet never shares the key. B3 only shows status.
+const API_KEY_PROP    = 'GEMINI_API_KEY';
+const KEY_STATUS_CELL = 'B3';
+const KEY_SAVED_TEXT   = '✓ Saved';
+const KEY_MISSING_TEXT = 'Not set';
 const MODEL_CELL      = 'B5';
 const KEYWORDS_CELL   = 'B7';
 const SENDERS_CELL    = 'B9';
@@ -230,18 +244,97 @@ const MAX_THREADS_PER_RUN = 100;
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('Expense Tracker')
-    .addItem('1. Initialize Setup Sheet', 'initializeSetupSheet')
-    .addItem('2. Create This Month\'s Tab', 'createCurrentMonthSheetMenu')
+    .addItem('Run Setup', 'setup')
+    .addItem('Update Gemini API Key', 'updateApiKey')
+    .addItem('Create This Month\'s Tab', 'createCurrentMonthSheetMenu')
     .addSeparator()
-    .addItem('3. Start Hourly Auto-Scan', 'startAutoScan')
+    .addItem('Start Hourly Auto-Scan', 'startAutoScan')
     .addItem('Stop Auto-Scan', 'stopAutoScan')
-    .addItem('(Manual Test) Scan Now ', 'scanEmailsMenu')
+    .addItem('Scan Now', 'scanEmailsMenu')
     .addToUi();
 }
 
 // ====================== SETUP ======================
-function initializeSetupSheet() {
+// The one entry point for first-time setup. Safe to re-run: it never
+// overwrites your categories, budgets, senders, or an API key already saved.
+function setup() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = buildSetupSheet(ss);
+  onOpen(); // show the menu now, no page refresh needed
+
+  if (!getApiKey(sheet)) {
+    const key = promptForApiKey();
+    if (key) saveApiKey(sheet, key);
+  }
+
+  if (!getApiKey(sheet)) {
+    SpreadsheetApp.getUi().alert(
+      'The Setup tab is ready, but there is no API key yet.\n\n' +
+      'Get a free key at aistudio.google.com/apikey, then click ' +
+      'Expense Tracker &gt; Update Gemini API Key to finish.'
+    );
+    return;
+  }
+
+  finishSetup(sheet);
+}
+
+function updateApiKey() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName(SETUP_SHEET_NAME) || buildSetupSheet(ss);
+  const key = promptForApiKey();
+  if (!key) return;
+  saveApiKey(sheet, key);
+  finishSetup(sheet);
+}
+
+// Starts the hourly trigger and runs one scan straight away, so a bad key or
+// a missing bank alert shows up now instead of silently an hour from now.
+function finishSetup(sheet) {
+  installScanTrigger();
+  const added = scanEmails();
+  const warning = sheet.getRange(WARNING_CELL).getValue().toString();
+
+  let message = 'Hourly auto-scan is on.\n\nFirst scan: ' + added +
+    ' expense(s) added from the last 2 days.';
+  if (warning) {
+    message += '\n\nHeads-up: ' + warning;
+  }
+  SpreadsheetApp.getUi().alert('Setup complete!\n\n' + message);
+}
+
+function promptForApiKey() {
+  const ui = SpreadsheetApp.getUi();
+  const response = ui.prompt(
+    'Gemini API key',
+    'Paste your free key from aistudio.google.com/apikey. It is stored privately ' +
+    'in this script, not in the sheet.',
+    ui.ButtonSet.OK_CANCEL
+  );
+  if (response.getSelectedButton() !== ui.Button.OK) return '';
+  return response.getResponseText().trim();
+}
+
+function saveApiKey(setupSheet, key) {
+  PropertiesService.getScriptProperties().setProperty(API_KEY_PROP, key);
+  setupSheet.getRange(KEY_STATUS_CELL).setValue(KEY_SAVED_TEXT);
+}
+
+function getApiKey(setupSheet) {
+  const saved = PropertiesService.getScriptProperties().getProperty(API_KEY_PROP);
+  if (saved) return saved;
+
+  // Older versions had you paste the key into B3. Move it into private
+  // storage the first time it's seen, and leave only a status behind.
+  const legacy = setupSheet.getRange(KEY_STATUS_CELL).getValue().toString().trim();
+  if (legacy &amp;&amp; legacy !== KEY_SAVED_TEXT &amp;&amp; legacy !== KEY_MISSING_TEXT) {
+    saveApiKey(setupSheet, legacy);
+    return legacy;
+  }
+  return '';
+}
+
+function buildSetupSheet(ss) {
   let sheet = ss.getSheetByName(SETUP_SHEET_NAME);
   if (!sheet) {
     sheet = ss.insertSheet(SETUP_SHEET_NAME, 0);
@@ -254,7 +347,10 @@ function initializeSetupSheet() {
     .setBackground('#4a86e8').setFontColor('#ffffff');
 
   sheet.getRange('A3').setValue('Gemini API Key:').setFontWeight('bold');
-  sheet.getRange('C3').setValue('Get a free key at aistudio.google.com/apikey, then paste it in B3.');
+  sheet.getRange('C3').setValue(
+    'Stored privately in this script, not in the sheet. To change it, click ' +
+    'Expense Tracker &gt; Update Gemini API Key.'
+  );
 
   sheet.getRange('A5').setValue('Gemini Model (advanced):').setFontWeight('bold');
   if (!sheet.getRange(MODEL_CELL).getValue()) sheet.getRange(MODEL_CELL).setValue(DEFAULT_MODEL);
@@ -314,15 +410,12 @@ function initializeSetupSheet() {
   sheet.getRange('C:C').setWrap(true);
   sheet.setFrozenRows(1);
 
+  // getApiKey() also moves a key an older version left in B3 into private storage.
+  sheet.getRange(KEY_STATUS_CELL).setValue(getApiKey(sheet) ? KEY_SAVED_TEXT : KEY_MISSING_TEXT);
+
   getOrCreateProcessedLogSheet(ss);
   ensureCurrentMonthSheet(ss);
-
-  SpreadsheetApp.getUi().alert(
-    'Setup complete!\n\n1. Paste your Gemini API key into cell B3.\n' +
-    '2. Add your bank\'s notification sender(s) in B9 (recommended).\n' +
-    '3. Edit the category list, and optionally set budgets, if you like.\n' +
-    '4. Menu &gt; Start Hourly Auto-Scan.'
-  );
+  return sheet;
 }
 
 // Applies warning-only protection to the auto-calculated Total Monthly
@@ -557,9 +650,13 @@ function fixSummaryTable(sheet) {
 }
 
 // ====================== TRIGGERS ======================
-function startAutoScan() {
+function installScanTrigger() {
   stopAutoScan();
   ScriptApp.newTrigger('scanEmails').timeBased().everyHours(1).create();
+}
+
+function startAutoScan() {
+  installScanTrigger();
   SpreadsheetApp.getUi().alert('Auto-scan started — emails will be checked every hour.');
 }
 
@@ -578,13 +675,15 @@ function scanEmailsMenu() {
 function scanEmails() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const setupSheet = ss.getSheetByName(SETUP_SHEET_NAME);
-  if (!setupSheet) throw new Error('Run "Initialize Setup Sheet" first.');
+  if (!setupSheet) throw new Error('Run "Run Setup" from the Expense Tracker menu first.');
 
   setupSheet.getRange(WARNING_CELL).setValue('');
 
-  const apiKey = setupSheet.getRange(GEMINI_KEY_CELL).getValue().toString().trim();
+  const apiKey = getApiKey(setupSheet);
   if (!apiKey) {
-    setupSheet.getRange(WARNING_CELL).setValue('Paste your Gemini API key in B3.');
+    setupSheet.getRange(WARNING_CELL).setValue(
+      'No Gemini API key saved. Click Expense Tracker &gt; Update Gemini API Key.'
+    );
     return 0;
   }
 
@@ -628,6 +727,7 @@ function scanEmails() {
   const label = GmailApp.getUserLabelByName(GMAIL_LABEL) || GmailApp.createLabel(GMAIL_LABEL);
   const newLogRows = [];
   const pendingTransactions = []; // collected here, then inserted in date order below
+  let apiError = ''; // first Gemini failure this run; later emails are left for the next run
 
   threads.forEach(thread =&gt; {
     let threadFullyHandled = true;
@@ -638,6 +738,11 @@ function scanEmails() {
     thread.getMessages().forEach(message =&gt; {
       const msgId = message.getId();
       if (processedIds.has(msgId)) return;
+
+      if (apiError) {
+        threadFullyHandled = false;
+        return;
+      }
 
       try {
         const result = analyzeEmailWithGemini(message, categories, apiKey, model);
@@ -660,6 +765,7 @@ function scanEmails() {
         newLogRows.push([msgId, new Date()]);
       } catch (err) {
         Logger.log('Error on message ' + msgId + ': ' + err);
+        if (/^Gemini API error/.test(err.message)) apiError = err.message;
         threadFullyHandled = false; // leave unlabeled so it's retried next run
       }
     });
@@ -689,6 +795,13 @@ function scanEmails() {
   if (newLogRows.length &gt; 0) {
     processedLogSheet.getRange(processedLogSheet.getLastRow() + 1, 1, newLogRows.length, 2)
       .setValues(newLogRows);
+  }
+
+  if (apiError) {
+    setupSheet.getRange(WARNING_CELL).setValue(
+      apiError + ' — affected emails will be retried on the next scan. If the key is ' +
+      'wrong, click Expense Tracker &gt; Update Gemini API Key.'
+    );
   }
 
   setupSheet.getRange(LAST_SCAN_TIME_CELL).setValue(new Date());
@@ -756,9 +869,13 @@ function analyzeEmailWithGemini(message, categories, apiKey, model) {
     muteHttpExceptions: true
   });
 
+  // Throw rather than return null: a null here would be logged as "processed,
+  // not a transaction" and the email would never be retried (e.g. after a
+  // wrong key or a rate-limit hit). scanEmails() catches this and surfaces it.
   if (response.getResponseCode() !== 200) {
-    Logger.log('Gemini API error ' + response.getResponseCode() + ': ' + response.getContentText());
-    return null;
+    let detail = response.getContentText();
+    try { detail = JSON.parse(detail).error.message; } catch (e) {}
+    throw new Error('Gemini API error ' + response.getResponseCode() + ': ' + detail);
   }
 
   const json = JSON.parse(response.getContentText());
