@@ -111,6 +111,7 @@ summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 /* top bar + on this page */
 .topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; min-height: 40px; }
 .crumb { font-family: var(--mono); font-size: 11px; color: var(--dim); }
+.contribute { display: block; max-width: 100%; margin-top: -10px; }
 
 .toc { position: relative; width: 240px; max-width: 100%; }
 .toc summary {
