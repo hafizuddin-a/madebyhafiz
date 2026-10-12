@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>muis-assistant case study · madebyhafiz</title>
+<meta name="description" content="A citation-only assistant over public MUIS information in English, Malay and Arabic: how it works, how it was evaluated on 150 questions, and what the evals changed.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://hafizuddin-a.github.io/madebyhafiz/muis-assistant.html">
+<meta property="og:title" content="muis-assistant case study · madebyhafiz">
+<meta property="og:description" content="A citation-only RAG assistant that abstains when it cannot answer, with the evals and mistakes written up.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hafizuddin-a.github.io/madebyhafiz/muis-assistant.html">
+<meta property="og:image" content="https://hafizuddin-a.github.io/madebyhafiz/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+<a class="skip" href="#content">Skip to content</a>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand-row">
+      <a class="brand" href="index.html">madebyhafiz</a>
+      <div class="tools">
+        <a href="index.html#projects" aria-label="Browse projects">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </a>
+        <a href="index.html#contact" aria-label="Get in touch">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">hafiz</a>
+      <a href="index.html#projects"><span class="caret" aria-hidden="true">›</span>projects</a>
+      <div class="sub">
+        <a href="muis-assistant.html" aria-current="page">muis-assistant</a>
+        <a href="index.html#confirmpay">confirmpay</a>
+        <a href="index.html#prayer-lockscreen">prayer-lockscreen</a>
+        <a href="index.html#sentryboard">sentryboard</a>
+      </div>
+      <a href="index.html#experience">experience</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+  </aside>
+
+  <main class="main" id="content">
+    <div class="col">
+
+      <div class="topbar">
+        <span class="crumb">madebyhafiz / projects / muis-assistant</span>
+        <details class="toc">
+          <summary>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
+              On This Page
+            </span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="toc-menu">
+            <a href="#how">How it works</a>
+            <a href="#evaluation">Evaluation</a>
+            <a href="#decisions">What the evals changed</a>
+            <a href="#limits">Limits and next steps</a>
+            <a href="#stack">Stack</a>
+          </div>
+        </details>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <h1 class="title">muis-assistant</h1>
+        <p class="lead">A citation-only assistant over public MUIS information. It answers in English, Malay and Arabic, links every claim to its source, and says so when it cannot answer.</p>
+        <div class="badges">
+          <span class="badge"><span class="k">type</span><span class="v">independent project</span></span>
+          <span class="badge"><span class="k">languages</span><span class="v">EN · MS · AR</span></span>
+          <span class="badge"><span class="k">tests</span><span class="v">270</span></span>
+        </div>
+        <p class="callout"><b>Independent project.</b> Not built, endorsed or operated by MUIS, and not a source of religious rulings. Both muis.gov.sg and AskGov forbid reproducing their content without written permission, so the crawled corpus stays private and there is no public deployment. I run demos from my own laptop on request.</p>
+      </div>
+
+      <section id="why">
+        <h2>Why it exists <a class="anchor" href="#why" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>The public guidance people need is spread across muis.gov.sg and AskGov's MUIS Q&amp;A, and people ask about it in different languages. On a religious topic a confident wrong answer costs more than no answer, so the design goal was narrow: never answer without a source, and never give a personal ruling.</p>
+        <p>The index covers 1,080 pages in 3,784 chunks: 534 AskGov Q&amp;A pages and about 546 muis.gov.sg pages across Haj, halal, zakat, wakaf, faraid, fatwa and irsyad, madrasahs, SCIS, asatizah, mosques and speeches.</p>
+      </section>
+
+      <section id="how">
+        <h2>How it works <a class="anchor" href="#how" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <pre class="code"><span class="dim">question</span> -&gt; small talk? (templates) -&gt; guard (personal ruling / override) -&gt; tool router (prayer times)
+         -&gt; embed (bge-m3) -&gt; pgvector cosine search, k=6 -&gt; similarity gate
+         -&gt; model (JSON: answer + citations) -&gt; validate citations
+         -&gt; <span class="cmd">answered</span> | <span class="cmd">abstained</span> | <span class="cmd">referred</span> | <span class="cmd">refused</span>
+         -&gt; handoff draft (on-topic abstentions) -&gt; redacted query log</pre>
+        <ul class="findings">
+          <li><b>Cite it or abstain</b>Every claim must cite a retrieved source. An answer without a valid citation becomes an abstention, and figures of 10 or more are checked against the cited text.</li>
+          <li><b>Rules before the model</b>Personal-ruling requests and instruction-override attempts are caught by deterministic guards and never reach retrieval or the model. Greetings, thanks and distress messages get templated replies in all three languages with no model call.</li>
+          <li><b>Tools for facts</b>Prayer times come straight from MUIS's official timetable on data.gov.sg. No model is involved and nothing is guessed.</li>
+          <li><b>A way out</b>When it cannot answer an on-topic question, it drafts a message to MUIS with NRIC, phone, email and account numbers redacted. The query log holds no user id, IP address or session.</li>
+          <li><b>A content audit</b>Its own logs feed a report of unanswered-topic clusters, pages that changed between crawls, possible conflicts between sources, and dated COVID-era pages. It flags these for people and never edits official content.</li>
+          <li><b>Cost and abuse controls</b>Per-client rate limits, a daily cap on paid model calls, a password gate on the question endpoints, and caches for repeated questions.</li>
+        </ul>
+      </section>
+
+      <section id="evaluation">
+        <h2>Evaluation <a class="anchor" href="#evaluation" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>Averaged over repeated runs of the current build (3,784 chunks, Claude Haiku 5.5, top 6 chunks retrieved).</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>metric</th><th>main set, 150 cases</th><th>new-section set, 59 cases</th></tr></thead>
+            <tbody>
+              <tr><td>recall@5</td><td class="num">0.956</td><td class="num">0.932</td></tr>
+              <tr><td>MRR</td><td class="num">0.870</td><td class="num">n/a</td></tr>
+              <tr><td>citation hit rate</td><td class="num">0.977</td><td class="num">0.937</td></tr>
+              <tr><td>false-abstain rate</td><td class="num">0.036</td><td class="num">0.059</td></tr>
+              <tr><td>abstention precision</td><td class="num">0.706</td><td class="num">n/a</td></tr>
+              <tr><td>numeric support</td><td class="num">0.951</td><td class="num">0.991</td></tr>
+              <tr><td>latency p50 / p95</td><td class="num">2.3 s / 3.6 s</td><td class="num">n/a</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The main set is 30 curated questions plus 120 derived from AskGov, in English, Malay and Arabic. The second set covers mosques, madrasahs, SCIS, speeches and about-us pages that were added later.</p>
+        <p class="callout"><b>What these numbers are not.</b> The questions were written or generated by me and are not independently reviewed. Generated cases take their gold page by construction and are easier than real questions. Gold is one page per case, so citation precision (about 0.5 to 0.6) understates answers that cite a sibling page that also answers. Model output varies, so every figure is an average, and there are no real users yet. A second person should review the gold labels before anyone treats these as benchmarks.</p>
+      </section>
+
+      <section id="decisions">
+        <h2>What the evals changed <a class="anchor" href="#decisions" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>The eval harness earned its keep by overturning things I expected to be improvements.</p>
+        <ul class="findings">
+          <li><b>Plain vector search beat hybrid search</b>On the 150-case set, vector retrieval scored MRR 0.85 against 0.58 for hybrid and 0.17 for keyword-only. The keyword arm added noise, so vector is the default and hybrid stays behind a flag.</li>
+          <li><b>The reranker made things worse</b>It lowered MRR (0.578 against 0.642) and added about 35 seconds per query, so it is off.</li>
+          <li><b>Query rewriting lost recall</b>On the 30 curated cases, recall@5 fell from 0.82 to 0.65, and the looser version let off-topic questions through the relevance gate. It is built but off.</li>
+          <li><b>A bigger model was not better</b>Claude Sonnet 5.5 abstained far more often than Haiku 5.5 (false-abstain 0.18 against 0.04 in that test), so the answer model stayed on Haiku. Turning hidden thinking off cut median latency from 4.1 s to 2.3 s with no meaningful quality change.</li>
+          <li><b>Two bugs were inflating the early numbers</b>Output was capped at 900 tokens shared with hidden reasoning, so JSON got truncated and counted as a fake abstention. Separately, the model often put unescaped quotes inside its answer string, which made invalid JSON and fake abstentions on about 40% of some questions. A prompt rule and a repair step fixed both, and any remaining failure is now flagged and excluded from content-gap reports.</li>
+          <li><b>13% of the index was junk</b>Breadcrumb fragments were outranking real content. Removing them cut false-abstains on the new sections from 0.085 to 0.059 at no extra cost.</li>
+          <li><b>A harmless-looking prompt change raised false-abstains from 0.036 to 0.107</b>Only the eval caught it.</li>
+          <li><b>Long speeches crowded out official pages</b>A ranking prior of 0.90 on speeches raised recall@5 on two coverage sets (0.875 to 0.938 and 0.85 to 0.95). It was tuned on 36 unreviewed cases, so I treat it as provisional.</li>
+          <li><b>Concurrent requests could crash the embedder</b>Found as a segfault, fixed with locks, and covered by a 16-thread regression test.</li>
+        </ul>
+      </section>
+
+      <section id="limits">
+        <h2>Limits and next steps <a class="anchor" href="#limits" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <ul class="plain">
+          <li><b>The guards are heuristic.</b> About 2.5% of generated answerable questions are wrongly referred as personal rulings. I left that on purpose, because wrongly referring someone to MUIS is the safe error.</li>
+          <li><b>Tone was judged by an LLM</b> (the newer voice was preferred in 42 of 44 answers). A blind human read and a native Malay and Arabic review are still to do.</li>
+          <li><b>The gold labels need a second reviewer</b>, and a permanent public demo needs written permission from the content owners first.</li>
+        </ul>
+      </section>
+
+      <section id="stack">
+        <h2>Stack <a class="anchor" href="#stack" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <div class="tags"><code class="tag">Python 3.12</code><code class="tag">Postgres 17 + pgvector</code><code class="tag">bge-m3 embeddings</code><code class="tag">Claude Haiku 5.5</code><code class="tag">FastAPI</code><code class="tag">Docker</code><code class="tag">270 tests</code></div>
+        <p>Want to see it run? A live demo from my laptop can be arranged. <a href="index.html#contact">Get in touch</a>.</p>
+      </section>
+
+      <footer>
+        <span>© 2026 madebyhafiz</span>
+        <a href="index.html">← Back to home</a>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script src="site.js"></script>
+</body>
+</html>

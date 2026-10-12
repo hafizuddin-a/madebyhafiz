@@ -3,12 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>madebyhafiz</title>
-<meta name="description" content="Projects by Hafiz: ConfirmPay, Prayer Lockscreen, MUIS Assistant and Sentryboard.">
+<title>madebyhafiz · AI engineer in Singapore</title>
+<meta name="description" content="Hafiz builds LLM applications that cite their sources and know when to abstain. Projects, experience and a case study of the MUIS assistant, scored on a 150-question eval set.">
 <meta name="theme-color" content="#000000">
-<meta property="og:title" content="madebyhafiz">
-<meta property="og:description" content="Small, practical tools for Android and the web, by Hafiz in Singapore.">
+<link rel="canonical" href="https://hafizuddin-a.github.io/madebyhafiz/">
+<meta property="og:title" content="madebyhafiz · AI engineer in Singapore">
+<meta property="og:description" content="I build LLM applications that cite their sources and know when to abstain.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://hafizuddin-a.github.io/madebyhafiz/">
+<meta property="og:image" content="https://hafizuddin-a.github.io/madebyhafiz/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,14 +40,15 @@
 
     <nav class="nav" aria-label="Site">
       <a href="#top" aria-current="page">hafiz</a>
-      <a href="#about">about</a>
       <a href="#projects"><span class="caret" aria-hidden="true">›</span>projects</a>
       <div class="sub">
+        <a href="muis-assistant.html">muis-assistant</a>
         <a href="#confirmpay">confirmpay</a>
         <a href="#prayer-lockscreen">prayer-lockscreen</a>
-        <a href="#muis-assistant">muis-assistant</a>
         <a href="#sentryboard">sentryboard</a>
       </div>
+      <a href="#experience">experience</a>
+      <a href="#about">about</a>
       <a href="#contact">contact</a>
     </nav>
   </aside>
@@ -61,8 +68,8 @@
           </summary>
           <div class="toc-menu">
             <a href="#start">Start here</a>
-            <a href="#how">How I build</a>
             <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
@@ -78,40 +85,56 @@
         <path class="logo-face" d="M224 0h13v17h-13zM350 0h13v17h-13zM518 0h13v17h-13zM686 0h13v17h-13zM700 0h13v17h-13zM714 0h13v17h-13zM756 0h13v17h-13zM224 18h13v17h-13zM350 18h13v17h-13zM518 18h13v17h-13zM686 18h13v17h-13zM0 36h13v17h-13zM14 36h13v17h-13zM42 36h13v17h-13zM56 36h13v17h-13zM98 36h13v17h-13zM112 36h13v17h-13zM126 36h13v17h-13zM140 36h13v17h-13zM182 36h13v17h-13zM196 36h13v17h-13zM210 36h13v17h-13zM224 36h13v17h-13zM266 36h13v17h-13zM280 36h13v17h-13zM294 36h13v17h-13zM308 36h13v17h-13zM350 36h13v17h-13zM364 36h13v17h-13zM378 36h13v17h-13zM392 36h13v17h-13zM434 36h13v17h-13zM476 36h13v17h-13zM518 36h13v17h-13zM532 36h13v17h-13zM546 36h13v17h-13zM560 36h13v17h-13zM602 36h13v17h-13zM616 36h13v17h-13zM630 36h13v17h-13zM644 36h13v17h-13zM686 36h13v17h-13zM700 36h13v17h-13zM714 36h13v17h-13zM756 36h13v17h-13zM798 36h13v17h-13zM812 36h13v17h-13zM826 36h13v17h-13zM840 36h13v17h-13zM0 54h13v17h-13zM28 54h13v17h-13zM56 54h13v17h-13zM140 54h13v17h-13zM182 54h13v17h-13zM224 54h13v17h-13zM266 54h13v17h-13zM308 54h13v17h-13zM350 54h13v17h-13zM392 54h13v17h-13zM434 54h13v17h-13zM476 54h13v17h-13zM518 54h13v17h-13zM560 54h13v17h-13zM644 54h13v17h-13zM686 54h13v17h-13zM756 54h13v17h-13zM826 54h13v17h-13zM0 72h13v17h-13zM28 72h13v17h-13zM56 72h13v17h-13zM98 72h13v17h-13zM112 72h13v17h-13zM126 72h13v17h-13zM140 72h13v17h-13zM182 72h13v17h-13zM224 72h13v17h-13zM266 72h13v17h-13zM280 72h13v17h-13zM294 72h13v17h-13zM308 72h13v17h-13zM350 72h13v17h-13zM392 72h13v17h-13zM434 72h13v17h-13zM448 72h13v17h-13zM462 72h13v17h-13zM476 72h13v17h-13zM518 72h13v17h-13zM560 72h13v17h-13zM602 72h13v17h-13zM616 72h13v17h-13zM630 72h13v17h-13zM644 72h13v17h-13zM686 72h13v17h-13zM756 72h13v17h-13zM812 72h13v17h-13zM0 90h13v17h-13zM28 90h13v17h-13zM56 90h13v17h-13zM98 90h13v17h-13zM140 90h13v17h-13zM182 90h13v17h-13zM224 90h13v17h-13zM266 90h13v17h-13zM350 90h13v17h-13zM392 90h13v17h-13zM476 90h13v17h-13zM518 90h13v17h-13zM560 90h13v17h-13zM602 90h13v17h-13zM644 90h13v17h-13zM686 90h13v17h-13zM756 90h13v17h-13zM798 90h13v17h-13zM0 108h13v17h-13zM28 108h13v17h-13zM56 108h13v17h-13zM98 108h13v17h-13zM112 108h13v17h-13zM126 108h13v17h-13zM140 108h13v17h-13zM182 108h13v17h-13zM196 108h13v17h-13zM210 108h13v17h-13zM224 108h13v17h-13zM266 108h13v17h-13zM280 108h13v17h-13zM294 108h13v17h-13zM308 108h13v17h-13zM350 108h13v17h-13zM364 108h13v17h-13zM378 108h13v17h-13zM392 108h13v17h-13zM434 108h13v17h-13zM448 108h13v17h-13zM462 108h13v17h-13zM476 108h13v17h-13zM518 108h13v17h-13zM560 108h13v17h-13zM602 108h13v17h-13zM616 108h13v17h-13zM630 108h13v17h-13zM644 108h13v17h-13zM686 108h13v17h-13zM756 108h13v17h-13zM798 108h13v17h-13zM812 108h13v17h-13zM826 108h13v17h-13zM840 108h13v17h-13z"/>
       </svg>
 
+      <div class="badges">
+        <span class="badge"><span class="k">status</span><span class="v"><i class="dot"></i>open to AI engineer roles</span></span>
+        <span class="badge"><span class="k">based</span><span class="v">Singapore</span></span>
+      </div>
+
       <div class="intro">
-        <p>madebyhafiz is the home of the things I build. I'm Hafiz, a Computer Engineering graduate from the National University of Singapore, and I make small, practical tools for Android and the web.</p>
-        <p>Much of it is built around everyday life in Singapore: PayNow, prayer times and public Islamic information. Every project below says what it does and what it is made with. <code class="inline">ls projects/</code> is the shortest way in.</p>
+        <p class="lead">I build LLM applications that cite their sources and know when to abstain.</p>
+        <p>I'm Hafiz, a Computer Engineering graduate from the National University of Singapore. My main project is an assistant over public MUIS information, scored against a 150-question eval set in English, Malay and Arabic. I have also built a machine-learning prototype for Synapxe and LLM workflows for staff at Masjid Wak Tanjong.</p>
+      </div>
+
+      <div>
+        <div class="stats">
+          <div class="stat"><b>0.977</b><span>citation hit rate</span></div>
+          <div class="stat"><b>150</b><span>eval cases in EN, MS and AR</span></div>
+          <div class="stat"><b>2.3 s</b><span>median answer time</span></div>
+          <div class="stat"><b>270</b><span>automated tests</span></div>
+        </div>
+        <p class="note" style="margin-top: 10px;">MUIS assistant, current build. The questions are written by me and not independently reviewed. <a href="muis-assistant.html#evaluation">See the limits</a>.</p>
       </div>
 
       <section id="start">
         <h2>Start here <a class="anchor" href="#start" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
-        <p>Pick a project, read how it was made, or skip straight to contact.</p>
+        <p>Read the case study for the project that best shows how I work, or browse everything else.</p>
         <pre class="code"><span class="cmd">cd</span> madebyhafiz/projects
 <span class="cmd">ls</span>
-<span class="dim">confirmpay  prayer-lockscreen  muis-assistant  sentryboard</span>
-<span class="cmd">open</span> <a href="https://confirmpay.link">confirmpay.link</a></pre>
-      </section>
-
-      <section id="how">
-        <h2>How I build <a class="anchor" href="#how" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
-        <ul class="plain">
-          <li><b>Keep your data yours.</b> Sentryboard asks for no internet permission at all, and ConfirmPay never holds money or stores a bank login.</li>
-          <li><b>Cite it or say nothing.</b> The MUIS assistant links every claim to a public source, and says so when it cannot answer.</li>
-          <li><b>Measure it.</b> That assistant is scored against a 150-question eval set, so changes are tested instead of guessed.</li>
-        </ul>
+<span class="dim">muis-assistant  confirmpay  prayer-lockscreen  sentryboard</span>
+<span class="cmd">open</span> <a href="muis-assistant.html">muis-assistant/case-study</a></pre>
       </section>
 
       <section id="projects">
         <h2>Projects <a class="anchor" href="#projects" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
-        <p>Four things I have built, starting with the ones I like best.</p>
+        <p>The AI work comes first, then the other things I have built.</p>
 
         <div class="cards">
+          <a class="card" id="muis-assistant" href="muis-assistant.html">
+            <div class="card-head">
+              <span class="card-name">muis-assistant<sup>→</sup></span>
+              <span class="card-meta">AI · read the case study</span>
+            </div>
+            <p class="card-desc">A citation-only assistant over public MUIS information, in English, Malay and Arabic. Every claim links to its source, and it says so when it cannot answer. Evaluated on 150 questions with the results and the mistakes written up.</p>
+            <div class="tags"><code class="tag">Python</code><code class="tag">pgvector</code><code class="tag">FastAPI</code><code class="tag">Claude</code><code class="tag">evals</code></div>
+            <p class="card-note">Independent project. Not built, endorsed or operated by MUIS, and not a source of religious rulings.</p>
+          </a>
+
           <a class="card" id="confirmpay" href="https://confirmpay.link">
             <div class="card-head">
               <span class="card-name">confirmpay<sup>↗</sup></span>
               <span class="card-meta">web · live at confirmpay.link</span>
             </div>
-            <p class="card-desc">Free, non-custodial PayNow requests and confirmations for Singapore nonprofits and small businesses. Money goes bank to bank, and ConfirmPay never holds it.</p>
+            <p class="card-desc">Free, non-custodial PayNow requests and confirmations for Singapore nonprofits and small businesses. Money goes bank to bank, and ConfirmPay never holds it. It confirms payments by parsing bank emails with plain regex instead of an LLM, so the logic is deterministic.</p>
             <div class="tags"><code class="tag">TypeScript</code><code class="tag">React</code><code class="tag">Cloudflare</code><code class="tag">Supabase</code></div>
           </a>
 
@@ -122,16 +145,6 @@
             </div>
             <p class="card-desc">An Android live wallpaper that draws prayer times on your lock screen. It uses the official MUIS timetable for Singapore and works offline for about 34,000 other cities.</p>
             <div class="tags"><code class="tag">Kotlin</code><code class="tag">Jetpack Compose</code><code class="tag">Adhan</code></div>
-          </div>
-
-          <div class="card" id="muis-assistant">
-            <div class="card-head">
-              <span class="card-name">muis-assistant</span>
-              <span class="card-meta">AI · demo on request</span>
-            </div>
-            <p class="card-desc">A citation-only assistant over public MUIS information, in English, Malay and Arabic. Every claim links to its source, and it says so when it cannot answer.</p>
-            <div class="tags"><code class="tag">Python</code><code class="tag">pgvector</code><code class="tag">FastAPI</code><code class="tag">Claude</code></div>
-            <p class="card-note">Independent project. Not built, endorsed or operated by MUIS, and not a source of religious rulings.</p>
           </div>
 
           <div class="card" id="sentryboard">
@@ -145,23 +158,59 @@
         </div>
       </section>
 
+      <section id="experience">
+        <h2>Experience <a class="anchor" href="#experience" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+
+        <div class="cards">
+          <div class="card">
+            <div class="card-head">
+              <span class="card-name">Masjid Wak Tanjong</span>
+              <span class="card-meta">Jul to Sep 2026</span>
+            </div>
+            <p class="card-role">Frontier Development Engineer (AI &amp; Operations)</p>
+            <ul>
+              <li>First engineer in a newly created role. Mapped workflows across five departments and built 9 systems that replaced manual processes, estimated to save about 40 staff hours a month.</li>
+              <li>Built a multilingual meeting-notes pipeline on Google Cloud Run. The Gemini API transcribes audio and returns structured JSON summaries to staff in Microsoft Teams.</li>
+              <li>Wrote Claude agent skills that stage QuickBooks entries from payroll PDFs with human-in-the-loop review, and ran the first staff training on using Claude with Microsoft 365.</li>
+            </ul>
+            <div class="tags"><code class="tag">Python</code><code class="tag">Gemini API</code><code class="tag">Claude</code><code class="tag">Cloud Run</code></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <span class="card-name">Synapxe</span>
+              <span class="card-meta">Jan to Jun 2025</span>
+            </div>
+            <p class="card-role">Machine Learning Engineer (Cybersecurity)</p>
+            <ul>
+              <li>Built an early-warning insider threat detection prototype for Singapore's national HealthTech agency: a hybrid model trained on the CERT Insider Threat Dataset, reaching 80% recall (8 in 10 insider threats detected).</li>
+            </ul>
+            <div class="tags"><code class="tag">Python</code><code class="tag">PyTorch</code><code class="tag">scikit-learn</code></div>
+          </div>
+        </div>
+      </section>
+
       <section id="about">
         <h2>About <a class="anchor" href="#about" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
         <p>I build small, practical software: Android apps, web services and AI tools, often for problems close to home.</p>
         <div class="facts">
           <dl>
-            <div class="fact"><dt>role</dt><dd>Computer Engineering graduate, NUS</dd></div>
+            <div class="fact"><dt>role</dt><dd>Looking for AI engineer roles</dd></div>
+            <div class="fact"><dt>education</dt><dd>B.Eng Computer Engineering, NUS (2022 to 2026)</dd></div>
             <div class="fact"><dt>based</dt><dd>Singapore</dd></div>
-            <div class="fact"><dt>tools</dt><dd>TypeScript, Kotlin, Python, Postgres</dd></div>
+            <div class="fact"><dt>ai</dt><dd>LLM apps, retrieval, evals, structured outputs, PyTorch</dd></div>
+            <div class="fact"><dt>stack</dt><dd>Python, TypeScript, Kotlin, Postgres, Cloudflare, Google Cloud</dd></div>
           </dl>
         </div>
       </section>
 
       <section id="contact">
         <h2>Contact <a class="anchor" href="#contact" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
-        <p>The best place to find me is GitHub.</p>
-        <pre class="code"><span class="dim">github  </span> <a href="https://github.com/hafizuddin-a">github.com/hafizuddin-a</a>
-<span class="dim">live    </span> <a href="https://confirmpay.link">confirmpay.link</a></pre>
+        <p>Email is the quickest way to reach me, and a résumé is available on request. The address is hidden from scrapers, so click to reveal it.</p>
+        <pre class="code"><span class="dim">email     </span> <button type="button" class="reveal" data-u="a.nddzifah" data-d="moc.liamg">Reveal email address</button>
+<span class="dim">linkedin  </span> <a href="https://www.linkedin.com/in/hafizuddin-aminuddin/">linkedin.com/in/hafizuddin-aminuddin</a>
+<span class="dim">github    </span> <a href="https://github.com/hafizuddin-a">github.com/hafizuddin-a</a></pre>
+        <noscript><p class="note">JavaScript is needed to reveal the email address. You can also reach me on LinkedIn.</p></noscript>
       </section>
 
       <footer>
@@ -173,11 +222,6 @@
   </main>
 </div>
 
-<script>
-  // Close the "On This Page" menu after picking a section.
-  document.querySelectorAll('.toc-menu a').forEach(function (a) {
-    a.addEventListener('click', function () { a.closest('details').removeAttribute('open'); });
-  });
-</script>
+<script src="site.js"></script>
 </body>
 </html>
