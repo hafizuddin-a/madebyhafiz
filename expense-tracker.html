@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automated Expense Tracker — Setup Guide (Code Below) · madebyhafiz</title>
+<meta name="description" content="Your banks already email you every time you spend. This script reads those emails and logs the expense for you, automatically, every hour. This gets more tedious the more banks/cards you juggle, which">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://hafizuddin-a.github.io/madebyhafiz/expense-tracker.html">
+<meta property="og:title" content="Automated Expense Tracker — Setup Guide (Code Below) · madebyhafiz">
+<meta property="og:description" content="Your banks already email you every time you spend. This script reads those emails and logs the expense for you, automatically, every hour. This gets more tedious the more banks/cards you juggle, which">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hafizuddin-a.github.io/madebyhafiz/expense-tracker.html">
+<meta property="og:image" content="https://hafizuddin-a.github.io/madebyhafiz/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+<a class="skip" href="#content">Skip to content</a>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand-row">
+      <a class="brand" href="index.html">madebyhafiz</a>
+      <div class="tools">
+        <a href="index.html#projects" aria-label="Browse projects">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </a>
+        <a href="index.html#contact" aria-label="Get in touch">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">hafiz</a>
+      <a href="index.html#projects"><span class="caret" aria-hidden="true">›</span>projects</a>
+      <div class="sub">
+        <a href="muis-assistant.html">muis-assistant</a>
+        <a href="index.html#confirmpay">confirmpay</a>
+        <a href="index.html#prayer-lockscreen">prayer-lockscreen</a>
+        <a href="index.html#sentryboard">sentryboard</a>
+        <a href="expense-tracker.html" aria-current="page">expense-tracker</a>
+      </div>
+      <a href="index.html#experience">experience</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+  </aside>
+
+  <main class="main" id="content">
+    <div class="col">
+
+      <div class="topbar">
+        <span class="crumb">madebyhafiz / projects / expense-tracker</span>
+        <details class="toc">
+          <summary>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
+              On This Page
+            </span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="toc-menu">
+            <a href="#step-1">Step 1: Turn on email alerts from your banks</a>
+            <a href="#step-2">Step 2: Create the sheet</a>
+            <a href="#step-3">Step 3: Get your free Gemini API key</a>
+            <a href="#done">You're done</a>
+            <a href="#code">Code</a>
+          </div>
+        </details>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <h1 class="title">Automated Expense Tracker — Setup Guide (Code Below)</h1>
+        <div class="badges">
+          <span class="badge"><span class="k">type</span><span class="v">my first project</span></span>
+          <span class="badge"><span class="k">runs on</span><span class="v">Google Apps Script</span></span>
+        </div>
+        <p class="lead">Your banks already email you every time you spend. This script reads those emails and logs the expense for you, automatically, every hour. This gets more tedious the more banks/cards you juggle, which is exactly the case it's built for. Follow the one-time setup steps below exactly and you'll be done in about 5 minutes.</p>
+      </div>
+
+      <section id="step-1">
+        <h2>Step 1: Turn on email alerts from your banks <a class="anchor" href="#step-1" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>This only works if your banks actually <b>email</b> you when you spend. Most send SMS or push notifications by default, so email is usually a separate toggle you need to turn on first. Do this for every bank/card you want tracked.</p>
+        <ul class="plain">
+        <li><b>DBS</b> (digibank / cards): <a href="https://www.dbs.com.sg/personal/support/bank-ibanking-notification-alerts.html">dbs.com.sg/personal/support/bank-ibanking-notification-alerts.html</a></li>
+        <li><b>DBS PayLah!</b>: <a href="https://www.dbs.com.sg/personal/support/bank-ssb-paylah-manage-notifications.html">dbs.com.sg/personal/support/bank-ssb-paylah-manage-notifications.html</a></li>
+        <li><b>UOB</b>: <a href="https://www.uob.com.sg/personal/cards/services/card-alerts.page">uob.com.sg/personal/cards/services/card-alerts.page</a></li>
+        <li><b>OCBC</b>: <a href="https://www.ocbc.com/personal-banking/security/secure-banking-ways/transaction-alerts.page">ocbc.com/personal-banking/security/secure-banking-ways/transaction-alerts.page</a></li>
+        <li><b>HSBC</b>: <a href="https://www.hsbc.com.sg/credit-cards/card-security/">hsbc.com.sg/credit-cards/card-security</a></li>
+        <li><b>Citibank</b>: <a href="https://www.citibank.com.sg/personal-banking/online-services/push-notifications">citibank.com.sg/personal-banking/online-services/push-notifications</a></li>
+        <li><b>Trust Bank</b>: on by default, nothing to set up — <a href="https://trustbank.sg/srf/">details here</a></li>
+        <li><b>Standard Chartered</b>: <a href="https://www.sc.com/sg/bank-with-us/online-banking/alerts-and-notifications/">sc.com/sg/bank-with-us/online-banking/alerts-and-notifications</a></li>
+        <li><b>Maybank</b>: <a href="https://www.maybank2u.com.sg/en/personal/banking-services/self-service/digital-services-guide/banking/payment-transfer-alerts.page">maybank2u.com.sg/en/personal/banking-services/self-service/digital-services-guide/banking/payment-transfer-alerts.page</a></li>
+        <li><b>MariBank</b>: <a href="https://www.maribank.sg/help-centre/article/10028-how-can-i-manage-my-notifications-and-alerts-preferences">maribank.sg/help-centre/article/10028</a></li>
+        </ul>
+        <p>Don't skip this! if your bank isn't emailing you, there's nothing for the script to read.</p>
+      </section>
+
+      <section id="step-2">
+        <h2>Step 2: Create the sheet <a class="anchor" href="#step-2" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <ol class="plain">
+        <li>Type <b>sheet.new</b> into your browser's address bar. This opens a blank Google Sheet.</li>
+        <li>Click <b>Extensions → Apps Script</b>.</li>
+        <li>Delete the placeholder code that's already there (<code class="inline">function myFunction() { }</code>).</li>
+        <li>Copy the full script from the code block at the bottom of this page, there's a copy icon in the top-right corner.</li>
+        <li>Paste it in, then click the save icon (💾).</li>
+        <li>In the function dropdown at the top (next to Debug), select <b>initializeSetupSheet</b>.</li>
+        <li>Click <b>Run</b>.</li>
+        <li>A popup will appear. Click <b>Review permissions</b>.</li>
+        <li>You'll see a "Google hasn't verified this app" warning. Click <b>Advanced</b>, then <b>Go to [project name] (unsafe)</b>. This warning shows up for any personal script that hasn't been submitted to Google's app store (<b>it's safe, don't worry).</b></li>
+        <li>Click <b>Select all</b>, then <b>Continue</b> to allow the permissions. The script only needs this to read your Gmail and edit this one Sheet. It can't send or delete anything.</li>
+        <li>The script will run and you'll see "Execution started" in the log at the bottom.</li>
+        <li>Go back to your Google Sheet. You'll now see a <b>Setup</b> tab has been created. </li>
+        </ol>
+        <p class="tip">Take a moment to edit the Expense Categories list and set a budget for any category you want to track. </p>
+      </section>
+
+      <section id="step-3">
+        <h2>Step 3: Get your free Gemini API key <a class="anchor" href="#step-3" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>This is what actually reads your bank emails and figures out the amount, category, and merchant, no matter which bank sent it.</p>
+        <ol class="plain">
+        <li>Go to <b>aistudio.google.com/apikey</b>.</li>
+        <li>Click <b>Create API key</b>.</li>
+        <li>If prompted, choose <b>Create project</b>.</li>
+        <li>Once the project is created, click <b>Create key</b>.</li>
+        <li>Click <b>Copy key</b>.</li>
+        <li>Go back to your Sheet, and paste the key into cell <b>B3</b> on the Setup tab.</li>
+        <li>Refresh the sheet, then click the <b>Expense Tracker</b> menu → <b>3. Start Hourly Auto-Scan</b>.</li>
+        </ol>
+        <p>From this moment on, any new payment email that arrives gets logged automatically and you don't need to do anything else.</p>
+        <p class="tip">This won't reach back and log everything already sitting in your inbox. Click <b>Expense Tracker → (Manual Test) Scan Now</b> once and it'll pick up any expenses in your emails from within the last 2 days.</p>
+      </section>
+
+      <section id="done">
+        <h2>You're done <a class="anchor" href="#done" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>No more effort needed from here. Gemini will scan your inbox every hour and automatically log new expenses with their category, source (which bank), a live pie chart, and budget tracking. New month tabs get created on their own too, whenever a new month starts.</p>
+        <p class="tip">Do not add any new columns in the monthly tab. Feel free to edit the code however you like to allow for this.</p>
+        <ul class="plain">
+        <li>The Setup tab already comes pre-filled with sender addresses for DBS, UOB, OCBC, HSBC, Citibank, Trust Bank, Standard Chartered, Maybank, and MariBank, so most people won't need to touch that field. If your bank isn't one of these, add its notification address there.</li>
+        <li>If something looks off after you paste in an update, use the <b>Expense Tracker → Create This Month's Tab</b> menu item. It's always safe to click and never deletes your existing rows.</li>
+        </ul>
+      </section>
+
+      <section id="code">
+        <h2>Code <a class="anchor" href="#code" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <div class="code-wrap"><button type="button" class="copy" data-target="script">Copy</button><pre class="code scroll" id="script" tabindex="0"><code>/**
+ * ============================================================
+ * AUTO EXPENSE TRACKER — Google Apps Script
+ * ------------------------------------------------------------
+ * Scans your Gmail every hour for payment/transaction emails
+ * from senders you trust (your bank/card issuer), uses the
+ * Gemini API to read them (works across different providers'
+ * formats since it's not regex/template based), and logs each
+ * expense into a monthly tab with a live category summary,
+ * budget highlighting, and pie chart.
+ *
+ * SETUP: See Guide above. Short version —
+ *   1. Paste this whole code into Extensions &gt; Apps Script.
+ *   2. Run `initializeSetupSheet` once, authorize it.
+ *   3. Paste your free Gemini API key into the Setup tab.
+ *   4. Menu: Expense Tracker &gt; Start Hourly Auto-Scan.
+ * ============================================================
+ */
+
+// ====================== CONFIG ======================
+const SETUP_SHEET_NAME    = 'Setup';
+const PROCESSED_LOG_SHEET = 'ProcessedLog';
+
+const GEMINI_KEY_CELL = 'B3';
+const MODEL_CELL      = 'B5';
+const KEYWORDS_CELL   = 'B7';
+const SENDERS_CELL    = 'B9';
+const WARNING_CELL    = 'D3';
+const LAST_SCAN_TIME_CELL   = 'B64';
+const LAST_SCAN_RESULT_CELL = 'B65';
+
+const CATEGORY_START_ROW = 13;
+const CATEGORY_END_ROW   = 27; // up to 15 categories
+const TOTAL_BUDGET_ROW   = CATEGORY_END_ROW + 2; // Setup row showing the auto-summed total budget
+const BUDGET_COL         = 2;  // column B, beside the category list
+
+const TIMEZONE = Session.getScriptTimeZone();
+
+const DEFAULT_MODEL = 'gemini-flash-lite-latest'; // Google-maintained alias, good free-tier fit
+const DEFAULT_KEYWORDS =
+  'payment,transaction,receipt,purchase,charged,debited,debit,you spent,payment confirmation,' +
+  'order confirmation,paid,invoice,withdrawal,bill payment,card statement';
+const DEFAULT_SENDERS =
+  'paylah.alert@dbs.com,ibanking.alert@dbs.com,unialerts@uobgroup.com,Notifications@ocbc.com,' +
+  'noreply@notify.ocbc.com,HSBC.Bank.Singapore.Limited@notification.hsbc.com.hk,alerts@citibank.com.sg,' +
+  'from_us@trustbank.sg,onlinebanking.sg@sc.com,notifications@maribank.sg,onlinebanking.alerts@maybank.com.sg';
+const DEFAULT_CATEGORIES = [
+  'Food &amp; Dining', 'Groceries', 'Transportation', 'Shopping', 'Bills &amp; Utilities',
+  'Entertainment', 'Health &amp; Fitness', 'Subscriptions', 'Donations &amp; Gifts', 'Others'
+];
+
+// Maps a sender's email/domain to a friendly bank name for the Source
+// column. Matched by substring so subdomains (e.g. notification.hsbc.com.hk)
+// still resolve correctly. Senders not on this list (e.g. one you add later
+// yourself) still get a readable label — see getBankLabel() — rather than
+// the raw address.
+const BANK_NAME_MAP = [
+  { match: 'dbs.com', name: 'DBS' },
+  { match: 'uobgroup.com', name: 'UOB' },
+  { match: 'ocbc.com', name: 'OCBC' },
+  { match: 'hsbc', name: 'HSBC' },
+  { match: 'citibank', name: 'Citibank' },
+  { match: 'trustbank.sg', name: 'Trust Bank' },
+  { match: 'sc.com', name: 'Standard Chartered' },
+  { match: 'maribank.sg', name: 'MariBank' },
+  { match: 'maybank.com.sg', name: 'Maybank' }
+];
+
+const GMAIL_LABEL  = 'Expense-Tracked';
+const SCAN_WINDOW  = 'newer_than:2d'; // wide buffer so a missed hour still gets caught
+const MAX_THREADS_PER_RUN = 100;
+
+// ====================== MENU ======================
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('Expense Tracker')
+    .addItem('1. Initialize Setup Sheet', 'initializeSetupSheet')
+    .addItem('2. Create This Month\'s Tab', 'createCurrentMonthSheetMenu')
+    .addSeparator()
+    .addItem('3. Start Hourly Auto-Scan', 'startAutoScan')
+    .addItem('Stop Auto-Scan', 'stopAutoScan')
+    .addItem('(Manual Test) Scan Now ', 'scanEmailsMenu')
+    .addToUi();
+}
+
+// ====================== SETUP ======================
+function initializeSetupSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SETUP_SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(SETUP_SHEET_NAME, 0);
+  } else {
+    ss.setActiveSheet(sheet);
+  }
+
+  sheet.getRange('A1:C1').merge().setValue('EXPENSE TRACKER — SETUP')
+    .setFontWeight('bold').setFontSize(16)
+    .setBackground('#4a86e8').setFontColor('#ffffff');
+
+  sheet.getRange('A3').setValue('Gemini API Key:').setFontWeight('bold');
+  sheet.getRange('C3').setValue('Get a free key at aistudio.google.com/apikey, then paste it in B3.');
+
+  sheet.getRange('A5').setValue('Gemini Model (advanced):').setFontWeight('bold');
+  if (!sheet.getRange(MODEL_CELL).getValue()) sheet.getRange(MODEL_CELL).setValue(DEFAULT_MODEL);
+  sheet.getRange('C5').setValue('Leave as-is unless you know what this means. See ai.google.dev/gemini-api/docs/models');
+
+  sheet.getRange('A7').setValue('Email Search Keywords:').setFontWeight('bold');
+  if (!sheet.getRange(KEYWORDS_CELL).getValue()) sheet.getRange(KEYWORDS_CELL).setValue(DEFAULT_KEYWORDS);
+  sheet.getRange('C7').setValue('Comma-separated. Narrows the search within your trusted senders below.');
+
+  sheet.getRange('A9').setValue('Trusted Bank Senders:').setFontWeight('bold');
+  if (!sheet.getRange(SENDERS_CELL).getValue()) sheet.getRange(SENDERS_CELL).setValue(DEFAULT_SENDERS);
+  sheet.getRange('C9').setValue(
+    'Comma-separated sender domains/emails, e.g. "dbs.com, notifications@ocbc.com". Open a past ' +
+    'notification email from your bank/card issuer to find its address. Only emails from these ' +
+    'senders are scanned — this is what keeps a merchant\'s own receipt email from being ' +
+    'double-counted alongside your bank\'s notification of the same purchase.'
+  );
+
+  sheet.getRange('A11').setValue('Expense Categories').setFontWeight('bold').setFontSize(12);
+  sheet.getRange('C11').setValue('Edit, delete, or add categories below (up to 15). Dropdowns update automatically.');
+  sheet.getRange('A12').setValue('Category').setFontWeight('bold').setBackground('#eeeeee');
+  sheet.getRange('B12').setValue('Budget ($)').setFontWeight('bold').setBackground('#eeeeee');
+  sheet.getRange('C12').setValue(
+    'Budget is optional — leave blank for no limit. When a category\'s spending this month ' +
+    'exceeds its budget, that category turns red in the month tab\'s summary table.'
+  );
+
+  const existing = sheet.getRange(CATEGORY_START_ROW, 1, CATEGORY_END_ROW - CATEGORY_START_ROW + 1, 1)
+    .getValues().flat().filter(String);
+  if (existing.length === 0) {
+    sheet.getRange(CATEGORY_START_ROW, 1, DEFAULT_CATEGORIES.length, 1)
+      .setValues(DEFAULT_CATEGORIES.map(c =&gt; [c]));
+  }
+
+  sheet.getRange(CATEGORY_START_ROW, BUDGET_COL, CATEGORY_END_ROW - CATEGORY_START_ROW + 1, 1)
+    .setNumberFormat('#,##0.00');
+
+  sheet.getRange(`A${TOTAL_BUDGET_ROW}`).setValue('Total Monthly Budget ($):').setFontWeight('bold');
+  sheet.getRange(`B${TOTAL_BUDGET_ROW}`).setFormula(
+    `=IF(SUM(B${CATEGORY_START_ROW}:B${CATEGORY_END_ROW})=0,"",` +
+    `SUM(B${CATEGORY_START_ROW}:B${CATEGORY_END_ROW}))`
+  ).setFontWeight('bold').setNumberFormat('#,##0.00');
+  sheet.getRange(`C${TOTAL_BUDGET_ROW}`).setValue(
+    'Auto-calculated as the sum of the category budgets above — this can\'t be set ' +
+    'independently, so your total and category budgets can never contradict each other. ' +
+    'To track an overall limit without per-category detail, just put the whole amount in ' +
+    'one category\'s budget.'
+  );
+  applyTotalBudgetProtection(sheet);
+
+  sheet.getRange('A64').setValue('Last scan time:').setFontWeight('bold');
+  sheet.getRange('A65').setValue('Last scan result:').setFontWeight('bold');
+
+  sheet.setColumnWidth(1, 190);
+  sheet.setColumnWidth(2, 260);
+  sheet.setColumnWidth(3, 430);
+  sheet.getRange('C:C').setWrap(true);
+  sheet.setFrozenRows(1);
+
+  getOrCreateProcessedLogSheet(ss);
+  ensureCurrentMonthSheet(ss);
+
+  SpreadsheetApp.getUi().alert(
+    'Setup complete!\n\n1. Paste your Gemini API key into cell B3.\n' +
+    '2. Add your bank\'s notification sender(s) in B9 (recommended).\n' +
+    '3. Edit the category list, and optionally set budgets, if you like.\n' +
+    '4. Menu &gt; Start Hourly Auto-Scan.'
+  );
+}
+
+// Applies warning-only protection to the auto-calculated Total Monthly
+// Budget cell, so editing it directly shows a heads-up instead of silently
+// overwriting the formula. Checks for an existing protection on this exact
+// range first, so re-running Initialize never stacks duplicates.
+function applyTotalBudgetProtection(sheet) {
+  const range = sheet.getRange(`B${TOTAL_BUDGET_ROW}`);
+  const already = sheet.getProtections(SpreadsheetApp.ProtectionType.RANGE)
+    .some(p =&gt; p.getRange().getA1Notation() === range.getA1Notation());
+  if (already) return;
+
+  const protection = range.protect();
+  protection.setWarningOnly(true);
+  protection.setDescription('Auto-calculated — edits here will be overwritten by the sum of category budgets.');
+}
+
+function ensureCurrentMonthSheet(ss) {
+  const name = Utilities.formatDate(new Date(), TIMEZONE, 'yyyy-MM');
+  let sheet = ss.getSheetByName(name);
+
+  if (sheet) {
+    // Tab already exists — bring its columns up to date (see
+    // migrateMonthSheetColumns), then rebuild the summary block, budget
+    // highlighting, and chart. The expense data itself (columns A–G) is
+    // never touched.
+    migrateMonthSheetColumns(sheet);
+    fixSummaryTable(sheet);
+  } else {
+    sheet = getOrCreateMonthSheet(ss, new Date());
+  }
+
+  return sheet;
+}
+
+function createCurrentMonthSheetMenu() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ensureCurrentMonthSheet(ss);
+  ss.setActiveSheet(sheet);
+  SpreadsheetApp.getUi().alert(`"${sheet.getName()}" tab is ready with the latest layout.`);
+}
+
+// ====================== MONTH TABS ======================
+function getOrCreateMonthSheet(ss, date) {
+  const name = Utilities.formatDate(date, TIMEZONE, 'yyyy-MM');
+  let sheet = ss.getSheetByName(name);
+
+  if (sheet) {
+    // A sheet for this month may already exist with an older column layout
+    // — make sure it's migrated before anything gets written into it, even
+    // if it's not the current month (a late-arriving email can target an
+    // older tab).
+    migrateMonthSheetColumns(sheet);
+    return sheet;
+  }
+
+  sheet = ss.insertSheet(name, 1);
+  const headers = ['Date', 'Time', 'Amount ($)', 'Description', 'Category', 'Source', 'Message ID'];
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers])
+    .setFontWeight('bold').setBackground('#4a86e8').setFontColor('#ffffff');
+  sheet.setFrozenRows(1);
+
+  sheet.setColumnWidth(1, 100);
+  sheet.setColumnWidth(2, 70);
+  sheet.setColumnWidth(3, 90);
+  sheet.setColumnWidth(4, 260);
+  sheet.setColumnWidth(5, 150);
+  sheet.setColumnWidth(6, 160);
+  sheet.hideColumns(7); // Message ID, used for de-duplication only
+
+  sheet.getRange(2, 1, 998, 1).setNumberFormat('yyyy-mm-dd');
+  sheet.getRange(2, 3, 998, 1).setNumberFormat('#,##0.00');
+
+  // Category dropdown — sourced live from the Setup sheet range, so
+  // editing categories there updates every month's dropdown automatically.
+  const setupSheet = ss.getSheetByName(SETUP_SHEET_NAME);
+  const categoryRule = SpreadsheetApp.newDataValidation()
+    .requireValueInRange(setupSheet.getRange(`A${CATEGORY_START_ROW}:A${CATEGORY_END_ROW}`), true)
+    .setAllowInvalid(false)
+    .build();
+  sheet.getRange(2, 5, 998, 1).setDataValidation(categoryRule);
+
+  buildSummaryTable(sheet);
+  return sheet;
+}
+
+// Ensures a month tab's columns match the current layout. Right now that
+// just means the Message ID column stays hidden — the check against F1
+// keeps this a safe no-op once a sheet is already correct. This is the
+// extension point if a future version changes the column layout again:
+// the goal is that "Create This Month's Tab" always brings an existing tab
+// up to date without ever touching the expense data itself.
+function migrateMonthSheetColumns(sheet) {
+  if (sheet.getRange('F1').getValue() === 'Source') {
+    sheet.hideColumns(7); // Message ID
+  }
+}
+
+function buildSummaryTable(sheet) {
+  sheet.getRange('J1').setValue('Summary').setFontWeight('bold').setFontSize(12);
+
+  sheet.getRange('J2').setValue('Total ($)').setFontWeight('bold').setBackground('#eeeeee');
+  sheet.getRange('K2').setFormula('=SUM(C2:C1000)')
+    .setFontWeight('bold').setNumberFormat('#,##0.00');
+
+  // Hidden helper mirroring the Setup total budget, for the same
+  // cross-sheet-reference reason as the category budget mirror below.
+  sheet.getRange('M2').setFormula(`=IF(Setup!B${TOTAL_BUDGET_ROW}="","",Setup!B${TOTAL_BUDGET_ROW})`);
+  sheet.getRange('M2').setNumberFormat('#,##0.00');
+  sheet.hideColumns(13); // M — helper only, mirrors the overall total budget
+
+  applyTotalBudgetConditionalFormatting(sheet);
+
+  // Row 3 is left blank as a spacer between the total and the category table.
+
+  sheet.getRange('J4').setValue('Category').setFontWeight('bold').setBackground('#eeeeee');
+  sheet.getRange('K4').setValue('Total ($)').setFontWeight('bold').setBackground('#eeeeee');
+
+  const rangeSize = CATEGORY_END_ROW - CATEGORY_START_ROW + 1; // 15
+  const firstCatRow = 5;
+  const lastCatRow = firstCatRow + rangeSize - 1; // 19
+
+  sheet.getRange(`J${firstCatRow}`).setFormula(
+    `=ARRAYFORMULA(IF(Setup!A${CATEGORY_START_ROW}:A${CATEGORY_END_ROW}="","",` +
+    `Setup!A${CATEGORY_START_ROW}:A${CATEGORY_END_ROW}))`
+  );
+  sheet.getRange(`K${firstCatRow}`).setFormula(
+    `=ARRAYFORMULA(IF(J${firstCatRow}:J${lastCatRow}="","",` +
+    `SUMIF($E$2:$E$1000,J${firstCatRow}:J${lastCatRow},$C$2:$C$1000)))`
+  );
+  sheet.getRange(`K${firstCatRow}:K${lastCatRow}`).setNumberFormat('#,##0.00');
+
+  // Hidden helper column mirroring Setup budgets. Needed because Google
+  // Sheets conditional format rules can't reference a different sheet
+  // directly — a normal formula can, so we mirror the value in first,
+  // then point the conditional format rule at this local column.
+  sheet.getRange(`L${firstCatRow}`).setFormula(
+    `=ARRAYFORMULA(IF(Setup!B${CATEGORY_START_ROW}:B${CATEGORY_END_ROW}="","",` +
+    `Setup!B${CATEGORY_START_ROW}:B${CATEGORY_END_ROW}))`
+  );
+  sheet.getRange(`L${firstCatRow}:L${lastCatRow}`).setNumberFormat('#,##0.00');
+  sheet.hideColumns(12); // L — helper only, not meant to be viewed/edited
+
+  applyBudgetConditionalFormatting(sheet, firstCatRow, lastCatRow);
+
+  sheet.setColumnWidth(10, 160);
+  sheet.setColumnWidth(11, 100);
+
+  buildCategoryChart(sheet, lastCatRow);
+}
+
+// Turns the overall Total ($) cell red when total spending this month
+// exceeds the auto-calculated Total Monthly Budget from Setup (mirrored
+// locally into M2 — see buildSummaryTable). There's no independently-set
+// total budget to clash with the category budgets; this value is always
+// their sum.
+function applyTotalBudgetConditionalFormatting(sheet) {
+  const range = sheet.getRange('J2:K2');
+
+  const rule = SpreadsheetApp.newConditionalFormatRule()
+    .whenFormulaSatisfied('=AND($K2&lt;&gt;"", $M2&lt;&gt;"", $K2&gt;$M2)')
+    .setBackground('#f4cccc')
+    .setFontColor('#990000')
+    .setRanges([range])
+    .build();
+
+  const otherRules = sheet.getConditionalFormatRules().filter(r =&gt;
+    !r.getRanges().some(rg =&gt; rg.getA1Notation() === range.getA1Notation())
+  );
+  otherRules.push(rule);
+  sheet.setConditionalFormatRules(otherRules);
+}
+
+// Turns a category's row red in the summary table (both the Category and
+// Total cells) when that category's spending this month exceeds the budget
+// mirrored into column L (see buildSummaryTable — conditional format rules
+// can't reference another sheet, so the budget value is copied in locally
+// first via a plain formula, which has no such restriction). A blank budget
+// means no limit. This is pure conditional formatting — Sheets evaluates it
+// live, so no script logic is needed on every scan to "check" anything.
+function applyBudgetConditionalFormatting(sheet, firstCatRow, lastCatRow) {
+  const range = sheet.getRange(`J${firstCatRow}:K${lastCatRow}`);
+
+  const rule = SpreadsheetApp.newConditionalFormatRule()
+    .whenFormulaSatisfied(
+      `=AND($K${firstCatRow}&lt;&gt;"", $L${firstCatRow}&lt;&gt;"", ` +
+      `$K${firstCatRow}&gt;$L${firstCatRow})`
+    )
+    .setBackground('#f4cccc')
+    .setFontColor('#990000')
+    .setRanges([range])
+    .build();
+
+  // Replace any existing rule already targeting this exact range, so
+  // rebuilding the summary table never stacks duplicate rules.
+  const otherRules = sheet.getConditionalFormatRules().filter(r =&gt;
+    !r.getRanges().some(rg =&gt; rg.getA1Notation() === range.getA1Notation())
+  );
+  otherRules.push(rule);
+  sheet.setConditionalFormatRules(otherRules);
+}
+
+// Rebuilds the pie chart from the category summary table, anchored below
+// the table rather than beside it. Removes any existing chart on the sheet
+// first, so re-running this never stacks duplicate charts on top of each other.
+function buildCategoryChart(sheet, lastCatRow) {
+  sheet.getCharts().forEach(chart =&gt; sheet.removeChart(chart));
+
+  const chartRow = lastCatRow + 2; // one blank row of buffer below the table
+  const dataRange = sheet.getRange(`J4:K${lastCatRow}`); // header row + category rows
+  const chart = sheet.newChart()
+    .setChartType(Charts.ChartType.PIE)
+    .addRange(dataRange)
+    .setOption('title', 'Category Breakdown')
+    .setOption('pieSliceText', 'percentage')
+    .setOption('legend', { position: 'right' })
+    .setOption('width', 480)
+    .setOption('height', 320)
+    .setPosition(chartRow, 10, 0, 0) // column J, below the category table
+    .build();
+
+  sheet.insertChart(chart);
+}
+
+// Rebuilds the J:K summary block, budget highlighting, and chart from
+// scratch — used to upgrade a month tab to the current layout without
+// touching the expense table. Clears a generous range to also mop up an
+// older-position summary/chart.
+function fixSummaryTable(sheet) {
+  sheet.getRange(1, 8, 75, 7).clearContent().clearFormat(); // H1:N75
+  buildSummaryTable(sheet);
+}
+
+// ====================== TRIGGERS ======================
+function startAutoScan() {
+  stopAutoScan();
+  ScriptApp.newTrigger('scanEmails').timeBased().everyHours(1).create();
+  SpreadsheetApp.getUi().alert('Auto-scan started — emails will be checked every hour.');
+}
+
+function stopAutoScan() {
+  ScriptApp.getProjectTriggers().forEach(t =&gt; {
+    if (t.getHandlerFunction() === 'scanEmails') ScriptApp.deleteTrigger(t);
+  });
+}
+
+function scanEmailsMenu() {
+  const added = scanEmails();
+  SpreadsheetApp.getUi().alert(`Scan complete. ${added} new expense(s) added.`);
+}
+
+// ====================== CORE SCAN ======================
+function scanEmails() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const setupSheet = ss.getSheetByName(SETUP_SHEET_NAME);
+  if (!setupSheet) throw new Error('Run "Initialize Setup Sheet" first.');
+
+  setupSheet.getRange(WARNING_CELL).setValue('');
+
+  const apiKey = setupSheet.getRange(GEMINI_KEY_CELL).getValue().toString().trim();
+  if (!apiKey) {
+    setupSheet.getRange(WARNING_CELL).setValue('Paste your Gemini API key in B3.');
+    return 0;
+  }
+
+  const model = (setupSheet.getRange(MODEL_CELL).getValue() || DEFAULT_MODEL).toString().trim();
+  const keywordsRaw = setupSheet.getRange(KEYWORDS_CELL).getValue().toString().trim();
+  const keywords = (keywordsRaw || DEFAULT_KEYWORDS).split(',').map(k =&gt; k.trim()).filter(Boolean);
+  const sendersRaw = setupSheet.getRange(SENDERS_CELL).getValue().toString().trim();
+  const senders = sendersRaw ? sendersRaw.split(',').map(s =&gt; s.trim()).filter(Boolean) : [];
+  const categories = getCategoryList(setupSheet);
+
+  const processedLogSheet = getOrCreateProcessedLogSheet(ss);
+  const lastLogRow = processedLogSheet.getLastRow();
+  const processedIds = lastLogRow &gt; 1
+    ? new Set(processedLogSheet.getRange(2, 1, lastLogRow - 1, 1).getValues().flat())
+    : new Set();
+
+  const keywordQuery = keywords.map(k =&gt; `"${k}"`).join(' OR ');
+  let query;
+  if (senders.length &gt; 0) {
+    // Restrict to trusted bank/card-issuer senders — the main defense against
+    // double-counting a purchase that both the bank and the merchant email about.
+    const senderQuery = senders.map(s =&gt; `from:${s}`).join(' OR ');
+    query = `(${senderQuery}) (${keywordQuery}) ${SCAN_WINDOW} -label:${GMAIL_LABEL}`;
+  } else {
+    query = `(${keywordQuery}) ${SCAN_WINDOW} -label:${GMAIL_LABEL}`;
+    setupSheet.getRange(WARNING_CELL).setValue(
+      'No trusted bank senders set in B9 — scanning all matching emails. This can ' +
+      'double-count a purchase if both your bank and a merchant email you about it. ' +
+      'Add your bank/card issuer\'s notification sender domain(s) to B9 for accurate results.'
+    );
+  }
+
+  let threads;
+  try {
+    threads = GmailApp.search(query, 0, MAX_THREADS_PER_RUN);
+  } catch (e) {
+    setupSheet.getRange(WARNING_CELL).setValue('Gmail search failed: ' + e.message);
+    return 0;
+  }
+
+  const label = GmailApp.getUserLabelByName(GMAIL_LABEL) || GmailApp.createLabel(GMAIL_LABEL);
+  const newLogRows = [];
+  const pendingTransactions = []; // collected here, then inserted in date order below
+
+  threads.forEach(thread =&gt; {
+    let threadFullyHandled = true;
+
+    // Every message is analyzed independently — some senders reuse one Gmail
+    // thread across multiple distinct transactions, so skipping later messages
+    // in a thread would silently miss real expenses.
+    thread.getMessages().forEach(message =&gt; {
+      const msgId = message.getId();
+      if (processedIds.has(msgId)) return;
+
+      try {
+        const result = analyzeEmailWithGemini(message, categories, apiKey, model);
+
+        if (result &amp;&amp; result.is_transaction) {
+          let txDate = message.getDate();
+          if (result.date) {
+            const parsed = new Date(result.date + 'T00:00:00');
+            if (!isNaN(parsed)) txDate = parsed;
+          }
+          const timeValue = /^\d{1,2}:\d{2}$/.test(result.time || '') ? result.time : '00:00';
+          const [hh, mm] = timeValue.split(':').map(Number);
+          const sortKey = new Date(txDate);
+          sortKey.setHours(hh, mm, 0, 0);
+
+          pendingTransactions.push({ result, message, txDate, sortKey });
+        }
+
+        processedIds.add(msgId);
+        newLogRows.push([msgId, new Date()]);
+      } catch (err) {
+        Logger.log('Error on message ' + msgId + ': ' + err);
+        threadFullyHandled = false; // leave unlabeled so it's retried next run
+      }
+    });
+
+    if (threadFullyHandled) thread.addLabel(label);
+  });
+
+  // Gmail search doesn't return results in chronological order (roughly
+  // newest-first, but not guaranteed), so sort every transaction found in
+  // this run oldest-to-newest before writing any rows. This keeps each
+  // month's sheet in a consistent, predictable order no matter how many
+  // emails a single run picks up.
+  pendingTransactions.sort((a, b) =&gt; a.sortKey - b.sortKey);
+
+  let insertedCount = 0;
+  pendingTransactions.forEach(({ result, message, txDate }) =&gt; {
+    const targetSheet = getOrCreateMonthSheet(ss, txDate);
+
+    // Same date + same amount already logged elsewhere in this sheet — still
+    // inserted (skipping risks losing a genuine second purchase) but flagged
+    // so it's easy to spot and remove if it really is a duplicate.
+    const dupRows = findPossibleDuplicateRows(targetSheet, txDate, result.amount);
+    insertExpenseRow(targetSheet, result, message, categories, txDate, dupRows.length &gt; 0);
+    insertedCount++;
+  });
+
+  if (newLogRows.length &gt; 0) {
+    processedLogSheet.getRange(processedLogSheet.getLastRow() + 1, 1, newLogRows.length, 2)
+      .setValues(newLogRows);
+  }
+
+  setupSheet.getRange(LAST_SCAN_TIME_CELL).setValue(new Date());
+  setupSheet.getRange(LAST_SCAN_RESULT_CELL).setValue(`${insertedCount} new expense(s) added`);
+
+  return insertedCount;
+}
+
+// ====================== GEMINI ======================
+function analyzeEmailWithGemini(message, categories, apiKey, model) {
+  const subject = message.getSubject() || '';
+  const from = message.getFrom() || '';
+  let body = message.getPlainBody();
+  if (!body) body = message.getBody().replace(/&lt;[^&gt;]+&gt;/g, ' ');
+  body = body.substring(0, 6000);
+
+  const emailDateStr = Utilities.formatDate(message.getDate(), TIMEZONE, 'yyyy-MM-dd');
+
+  const prompt =
+    'You are a financial email classifier for a personal expense tracker.\n' +
+    'Decide whether the email below is a payment/transaction/purchase NOTIFICATION ' +
+    '(from a bank, card issuer, e-wallet, or merchant) reporting a specific amount of ' +
+    'money spent, paid, or charged to the recipient.\n\n' +
+    'If it is NOT a single transaction notification (e.g. marketing, newsletter, monthly ' +
+    'statement summary, security alert, balance inquiry, promo), return only ' +
+    '{"is_transaction": false}.\n\n' +
+    'If it IS a transaction notification, extract:\n' +
+    '- date: transaction date as YYYY-MM-DD (use ' + emailDateStr + ' if not stated in the email)\n' +
+    '- time: transaction time as 24-hour HH:MM (use "00:00" if not stated)\n' +
+    '- amount: the transaction amount as a positive plain number, no currency symbols/commas\n' +
+    '- description: a short 3-8 word merchant or purpose summary\n' +
+    '- category: the single best match from this exact list: [' + categories.join(', ') + ']. ' +
+    'If nothing fits well, use "Other".\n\n' +
+    'Email From: ' + from + '\n' +
+    'Email Subject: ' + subject + '\n' +
+    'Email Body:\n' + body;
+
+  const schema = {
+    type: 'OBJECT',
+    properties: {
+      is_transaction: { type: 'BOOLEAN' },
+      date:        { type: 'STRING' },
+      time:        { type: 'STRING' },
+      amount:      { type: 'NUMBER' },
+      description: { type: 'STRING' },
+      category:    { type: 'STRING' }
+    },
+    required: ['is_transaction']
+  };
+
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+  const payload = {
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: {
+      responseMimeType: 'application/json',
+      responseSchema: schema,
+      temperature: 0
+    }
+  };
+
+  const response = UrlFetchApp.fetch(url, {
+    method: 'post',
+    contentType: 'application/json',
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  });
+
+  if (response.getResponseCode() !== 200) {
+    Logger.log('Gemini API error ' + response.getResponseCode() + ': ' + response.getContentText());
+    return null;
+  }
+
+  const json = JSON.parse(response.getContentText());
+  const text = json.candidates &amp;&amp; json.candidates[0] &amp;&amp;
+               json.candidates[0].content &amp;&amp; json.candidates[0].content.parts[0].text;
+  if (!text) return null;
+
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch (e) {
+    Logger.log('Could not parse Gemini JSON output: ' + text);
+    return null;
+  }
+
+  if (!parsed.is_transaction) return { is_transaction: false };
+
+  const matched = categories.find(c =&gt; c.toLowerCase() === (parsed.category || '').toLowerCase());
+  parsed.category = matched || categories[categories.length - 1] || 'Other';
+  parsed.amount = Number(parsed.amount) || 0;
+
+  return parsed;
+}
+
+// ====================== ROW INSERT ======================
+function insertExpenseRow(sheet, data, message, categories, txDate, isPossibleDuplicate) {
+  const newRow = getNextExpenseRow(sheet);
+  const timeValue = /^\d{1,2}:\d{2}$/.test(data.time || '') ? data.time : '00:00';
+  let description = data.description || message.getSubject() || '(no description)';
+  if (isPossibleDuplicate) description = '** ' + description;
+
+  sheet.getRange(newRow, 1, 1, 7).setValues([[
+    Utilities.formatDate(txDate, TIMEZONE, 'yyyy-MM-dd'),
+    timeValue,
+    data.amount,
+    description,
+    data.category,
+    getBankLabel(message),
+    message.getId()
+  ]]);
+
+  if (isPossibleDuplicate) {
+    sheet.getRange(newRow, 1, 1, 6).setBackground('#fff2cc');
+    sheet.getRange(newRow, 4).setNote(
+      'Same date and amount as another row in this sheet — this can happen when two ' +
+      'different emails (e.g. your bank and a merchant) report the same purchase. ' +
+      'Check and delete this row if it\'s a duplicate.'
+    );
+  }
+}
+
+// Extracts a clean email address from a "From" header like
+// 'DBS PayLah! &lt;paylah.alert@dbs.com&gt;', falling back to the raw string.
+function getSenderEmail(message) {
+  const from = message.getFrom() || '';
+  const match = from.match(/&lt;([^&gt;]+)&gt;/);
+  return match ? match[1] : from.trim();
+}
+
+// Resolves a sender's email to a friendly bank name for the Source column.
+// Falls back to a capitalized guess from the domain for senders not in
+// BANK_NAME_MAP, rather than showing the raw address.
+function getBankLabel(message) {
+  const email = getSenderEmail(message).toLowerCase();
+  const known = BANK_NAME_MAP.find(b =&gt; email.includes(b.match));
+  if (known) return known.name;
+
+  const domain = email.split('@')[1] || email;
+  const mainPart = domain.split('.')[0];
+  return mainPart ? mainPart.charAt(0).toUpperCase() + mainPart.slice(1) : email;
+}
+
+// Finds the next empty row in the expense TABLE specifically (column A),
+// ignoring the category-summary formulas in columns J/K — those extend
+// much further down the sheet and must not affect where new rows go.
+function getNextExpenseRow(sheet) {
+  const numRows = sheet.getMaxRows();
+  const colA = sheet.getRange(2, 1, numRows - 1, 1).getValues();
+  for (let i = colA.length - 1; i &gt;= 0; i--) {
+    if (colA[i][0] !== '' &amp;&amp; colA[i][0] !== null) {
+      return i + 3; // row (2+i) is the last filled row; next row is +1
+    }
+  }
+  return 2; // no expenses yet — first one goes right under the header
+}
+
+// Finds existing rows in a month sheet with the same date and amount (±0.01).
+function findPossibleDuplicateRows(sheet, txDate, amount) {
+  const lastFilledRow = getNextExpenseRow(sheet) - 1;
+  if (lastFilledRow &lt; 2) return [];
+  const dateStr = Utilities.formatDate(txDate, TIMEZONE, 'yyyy-MM-dd');
+  const values = sheet.getRange(2, 1, lastFilledRow - 1, 3).getValues(); // Date, Time, Amount
+  const matches = [];
+  values.forEach((row, i) =&gt; {
+    const rowDateStr = row[0] instanceof Date ? Utilities.formatDate(row[0], TIMEZONE, 'yyyy-MM-dd') : row[0];
+    if (rowDateStr === dateStr &amp;&amp; Math.abs(Number(row[2]) - amount) &lt; 0.01) {
+      matches.push(i + 2);
+    }
+  });
+  return matches;
+}
+
+// ====================== HELPERS ======================
+function getCategoryList(setupSheet) {
+  return setupSheet.getRange(CATEGORY_START_ROW, 1, CATEGORY_END_ROW - CATEGORY_START_ROW + 1, 1)
+    .getValues().flat().map(v =&gt; v.toString().trim()).filter(Boolean);
+}
+
+function getOrCreateProcessedLogSheet(ss) {
+  let sheet = ss.getSheetByName(PROCESSED_LOG_SHEET);
+  if (!sheet) {
+    sheet = ss.insertSheet(PROCESSED_LOG_SHEET);
+    sheet.getRange('A1:B1').setValues([['Message ID', 'Processed At']]).setFontWeight('bold');
+    sheet.hideSheet();
+  }
+  return sheet;
+}</code></pre></div>
+      </section>
+
+      <footer>
+        <span>© 2026 madebyhafiz</span>
+        <a href="index.html#projects">← Back to projects</a>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script src="site.js"></script>
+</body>
+</html>

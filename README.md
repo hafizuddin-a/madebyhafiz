@@ -6,4 +6,4 @@
   </picture>
 </p>
 
-This is my personal website
+<p align="center">This is my personal website</p>

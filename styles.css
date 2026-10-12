@@ -177,7 +177,36 @@ h2 {
   color: var(--muted);
 }
 .anchor:hover { color: var(--text); }
-ul.plain { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+ul.plain, ol.plain { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.plain a { overflow-wrap: anywhere; }
+.tip::before {
+  content: "tip";
+  margin-right: 10px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--chip);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--dim);
+}
+.code-wrap { position: relative; }
+.code.scroll { max-height: 640px; overflow: auto; }
+.copy {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  z-index: 1;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--chip);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.copy:hover { color: var(--text); border-color: var(--line-strong); }
+.copy:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 b { font-weight: 600; }
 
 code.inline,
