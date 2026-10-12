@@ -70,7 +70,7 @@
           <div class="toc-menu">
             <a href="#step-1">Step 1: Turn on email alerts from your banks</a>
             <a href="#step-2">Step 2: Get your free Gemini API key</a>
-            <a href="#step-3">Step 3: Create the sheet and run setup</a>
+            <a href="#step-3">Step 3: Copy the template and run setup</a>
             <a href="#done">You're done</a>
             <a href="#code">Code</a>
           </div>
@@ -88,7 +88,7 @@
       </div>
 
       <p>Your banks already email you every time you spend. This script reads those emails and logs the expense for you, automatically, every hour. This gets more tedious the more banks/cards you juggle, which is exactly the case it's built for.</p>
-      <p>You'll need a Gmail account (the one your bank alerts go to) and about 5 minutes. There are three steps: turn on bank emails, grab a free API key, then paste one script and click Run. The script builds the whole sheet, starts the hourly scan, and does the first scan for you.</p>
+      <p>You'll need a Gmail account (the one your bank alerts go to) and about 5 minutes. There are three steps: turn on bank emails, grab a free API key, then make a copy of the template Sheet and click Run Setup. The template already has the script and the whole layout built in, so setup just saves your key, starts the hourly scan, and does the first scan for you.</p>
 
       <section id="step-1">
         <h2>Step 1: Turn on email alerts from your banks <a class="anchor" href="#step-1" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
@@ -118,27 +118,25 @@
         <li>Go to <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer"><b>aistudio.google.com/apikey</b></a>.</li>
         <li>Click <b>Create API key</b>.</li>
         <li>If prompted, choose <b>Create project</b>.</li>
-        <li>Once the project is created, click <b>Create key</b>.</li>
+        <li>Once the project is created, click <b>Create key</b>, then <b>Copy key</b>.</li>
         </ol>
-        <p class="tip">Leave this tab open. You'll copy the key in Step 3, after your clipboard has been used for the script.</p>
+        <p class="tip">Keep the key on your clipboard, because you'll paste it in Step 3. If you lose it, the same page lets you copy it again.</p>
       </section>
 
       <section id="step-3">
-        <h2>Step 3: Create the sheet and run setup <a class="anchor" href="#step-3" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <h2>Step 3: Copy the template and run setup <a class="anchor" href="#step-3" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
         <ol class="plain">
-        <li>Open <a href="https://sheet.new" target="_blank" rel="noopener noreferrer"><b>sheet.new</b></a> to create a blank Google Sheet.</li>
-        <li>Click <b>Extensions → Apps Script</b>.</li>
-        <li>Delete the placeholder code that's already there (<code class="inline">function myFunction() { }</code>).</li>
-        <li>Copy the full script: <button type="button" class="copy inline-copy" data-target="script">Copy</button> (it's also in the Code section at the bottom of this page).</li>
-        <li>Paste it in, then click the save icon (💾).</li>
-        <li>In the function dropdown at the top (next to Debug), select <b>setup</b>, then click <b>Run</b>.</li>
-        <li>A popup will appear. Click <b>Review permissions</b>.</li>
+        <li>Open the <a href="https://docs.google.com/spreadsheets/d/1RS5nBOjP5LnTEhq3zzDa7700ayTwIHFqsh-Owf5LWz4/copy" target="_blank" rel="noopener noreferrer"><b>template Sheet</b></a>. Sign in to the Google account your bank alerts go to, then click <b>Make a copy</b>. It has to be that account, because the script reads that inbox.</li>
+        <li>Once your copy loads, click <b>Expense Tracker → Run Setup</b> in the menu bar. If the menu isn't there yet, give it a few seconds or refresh the page.</li>
+        <li>A popup says <b>Authorization required</b>. Click <b>Continue</b> and choose your account.</li>
         <li>You'll see a "Google hasn't verified this app" warning. Click <b>Advanced</b>, then <b>Go to [project name] (unsafe)</b>. This warning shows up for any personal script that hasn't been submitted to Google's app store (<b>it's safe, don't worry).</b></li>
         <li>Click <b>Select all</b>, then <b>Continue</b> to allow the permissions. The script only needs this to read your Gmail and edit this one Sheet. It can't send or delete anything.</li>
-        <li>Switch back to your <b>Google Sheet</b> tab. A popup there asks for your Gemini API key. Go to the AI Studio tab from Step 2, click <b>Copy key</b>, paste it into the popup, and click <b>OK</b>.</li>
-        <li>Wait for the <b>Setup complete</b> popup. That's the sheet built, the hourly scan switched on, and the first scan finished.</li>
+        <li>If nothing happens after you approve, click <b>Expense Tracker → Run Setup</b> again.</li>
+        <li>A popup asks for your Gemini API key. Paste the key from Step 2 and click <b>OK</b>.</li>
+        <li>Wait for the <b>Setup complete</b> popup. That's the hourly scan switched on and the first scan finished.</li>
         </ol>
         <p class="tip">Take a moment to edit the Expense Categories list on the Setup tab and set a budget for any category you want to track.</p>
+        <p>Prefer to read the code and paste it yourself? Skip the template. Open <a href="https://sheet.new" target="_blank" rel="noopener noreferrer"><b>sheet.new</b></a>, click <b>Extensions → Apps Script</b>, replace the placeholder with the script from the <a href="#code">Code section</a> below, save it, then choose <b>setup</b> in the function dropdown and click <b>Run</b>. The rest is the same from the authorization step.</p>
       </section>
 
       <section id="done">
@@ -149,7 +147,7 @@
         <li>The Setup tab already comes pre-filled with sender addresses for DBS, UOB, OCBC, HSBC, Citibank, Trust Bank, Standard Chartered, Maybank, and MariBank, so most people won't need to touch that field. If your bank isn't one of these, add its notification address there.</li>
         <li>Setup scans the last 2 days of email straight away, so you'll usually see some rows immediately. It can't reach back further than that.</li>
         <li>If something looks off after you paste in an update, use the <b>Expense Tracker → Create This Month's Tab</b> menu item. It's always safe to click and never deletes your existing rows.</li>
-        <li>Updating from an older version? Paste the new code over the old one and run <b>setup</b> again. It keeps your categories, budgets and senders, and moves an API key you previously pasted into cell B3 into private storage.</li>
+        <li>Updating from an older copy? Open <b>Extensions → Apps Script</b>, paste the new code over the old one, save, then click <b>Expense Tracker → Run Setup</b> again. It keeps your categories, budgets and senders, and moves an API key you previously pasted into cell B3 into private storage.</li>
         </ul>
         <h3>If nothing is being logged</h3>
         <ul class="plain">
@@ -163,6 +161,7 @@
 
       <section id="code">
         <h2>Code <a class="anchor" href="#code" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>This is the full script that's already inside the template. You only need it if you want to read it, change it, or install it by hand.</p>
         <div class="code-wrap"><button type="button" class="copy" data-target="script">Copy</button><pre class="code scroll" id="script" tabindex="0"><code>/**
  * ============================================================
  * AUTO EXPENSE TRACKER — Google Apps Script
@@ -174,7 +173,9 @@
  * expense into a monthly tab with a live category summary,
  * budget highlighting, and pie chart.
  *
- * SETUP: See Guide above. Short version —
+ * SETUP: See Guide above. If you made a copy of the template, this is
+ * already installed: just click Expense Tracker &gt; Run Setup.
+ * To install it by hand instead —
  *   1. Paste this whole code into Extensions &gt; Apps Script.
  *   2. Run `setup` once and authorize it.
  *   3. Paste your free Gemini API key when the popup asks for it.

@@ -209,7 +209,6 @@ ul.plain, ol.plain { margin: 0; padding-left: 22px; display: flex; flex-directio
 }
 .copy:hover { color: var(--text); border-color: var(--line-strong); }
 .copy:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
-.copy.inline-copy { position: static; margin-left: 6px; vertical-align: 1px; }
 details.fold summary { cursor: pointer; color: var(--muted); font-size: 14px; }
 details.fold[open] summary { margin-bottom: 12px; }
 b { font-weight: 600; }
