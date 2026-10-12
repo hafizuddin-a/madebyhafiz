@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>madebyhafiz</title>
+<meta name="description" content="Projects by Hafiz: ConfirmPay, Prayer Lockscreen, MUIS Assistant and Sentryboard.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="madebyhafiz">
+<meta property="og:description" content="Small, practical tools for Android and the web, by Hafiz in Singapore.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+<a class="skip" href="#content">Skip to content</a>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand-row">
+      <a class="brand" href="#top">madebyhafiz</a>
+      <div class="tools">
+        <a href="#projects" aria-label="Browse projects">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </a>
+        <a href="#contact" aria-label="Get in touch">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Site">
+      <a href="#top" aria-current="page">hafiz</a>
+      <a href="#about">about</a>
+      <a href="#projects"><span class="caret" aria-hidden="true">›</span>projects</a>
+      <div class="sub">
+        <a href="#confirmpay">confirmpay</a>
+        <a href="#prayer-lockscreen">prayer-lockscreen</a>
+        <a href="#muis-assistant">muis-assistant</a>
+        <a href="#sentryboard">sentryboard</a>
+      </div>
+      <a href="#contact">contact</a>
+    </nav>
+  </aside>
+
+  <main class="main" id="content">
+    <div class="col">
+
+      <div class="topbar">
+        <span class="crumb">madebyhafiz</span>
+        <details class="toc">
+          <summary>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
+              On This Page
+            </span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="toc-menu">
+            <a href="#start">Start here</a>
+            <a href="#how">How I build</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </details>
+      </div>
+
+      <h1 class="visually-hidden">madebyhafiz</h1>
+      <svg class="logo" role="img" aria-label="madebyhafiz" viewBox="-6 0 860 126">
+        <defs>
+          <pattern id="dither" class="logo-dither" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="2" height="2"/><rect x="2" y="2" width="2" height="2"/></pattern>
+        </defs>
+        <path fill="url(#dither)" d="M218 0h6v18h-6zM344 0h6v18h-6zM512 0h6v18h-6zM680 0h6v18h-6zM750 0h6v18h-6zM218 18h6v18h-6zM344 18h6v18h-6zM512 18h6v18h-6zM680 18h6v18h-6zM-6 36h6v18h-6zM36 36h6v18h-6zM92 36h6v18h-6zM176 36h6v18h-6zM260 36h6v18h-6zM344 36h6v18h-6zM428 36h6v18h-6zM470 36h6v18h-6zM512 36h6v18h-6zM596 36h6v18h-6zM680 36h6v18h-6zM750 36h6v18h-6zM792 36h6v18h-6zM-6 54h6v18h-6zM22 54h6v18h-6zM50 54h6v18h-6zM134 54h6v18h-6zM176 54h6v18h-6zM218 54h6v18h-6zM260 54h6v18h-6zM302 54h6v18h-6zM344 54h6v18h-6zM386 54h6v18h-6zM428 54h6v18h-6zM470 54h6v18h-6zM512 54h6v18h-6zM554 54h6v18h-6zM638 54h6v18h-6zM680 54h6v18h-6zM750 54h6v18h-6zM820 54h6v18h-6zM-6 72h6v18h-6zM22 72h6v18h-6zM50 72h6v18h-6zM92 72h6v18h-6zM176 72h6v18h-6zM218 72h6v18h-6zM260 72h6v18h-6zM344 72h6v18h-6zM386 72h6v18h-6zM428 72h6v18h-6zM512 72h6v18h-6zM554 72h6v18h-6zM596 72h6v18h-6zM680 72h6v18h-6zM750 72h6v18h-6zM806 72h6v18h-6zM-6 90h6v18h-6zM22 90h6v18h-6zM50 90h6v18h-6zM92 90h6v18h-6zM134 90h6v18h-6zM176 90h6v18h-6zM218 90h6v18h-6zM260 90h6v18h-6zM344 90h6v18h-6zM386 90h6v18h-6zM470 90h6v18h-6zM512 90h6v18h-6zM554 90h6v18h-6zM596 90h6v18h-6zM638 90h6v18h-6zM680 90h6v18h-6zM750 90h6v18h-6zM792 90h6v18h-6zM-6 108h6v18h-6zM22 108h6v18h-6zM50 108h6v18h-6zM92 108h6v18h-6zM176 108h6v18h-6zM260 108h6v18h-6zM344 108h6v18h-6zM428 108h6v18h-6zM512 108h6v18h-6zM554 108h6v18h-6zM596 108h6v18h-6zM680 108h6v18h-6zM750 108h6v18h-6zM792 108h6v18h-6z"/>
+        <path class="logo-face" d="M224 0h13v17h-13zM350 0h13v17h-13zM518 0h13v17h-13zM686 0h13v17h-13zM700 0h13v17h-13zM714 0h13v17h-13zM756 0h13v17h-13zM224 18h13v17h-13zM350 18h13v17h-13zM518 18h13v17h-13zM686 18h13v17h-13zM0 36h13v17h-13zM14 36h13v17h-13zM42 36h13v17h-13zM56 36h13v17h-13zM98 36h13v17h-13zM112 36h13v17h-13zM126 36h13v17h-13zM140 36h13v17h-13zM182 36h13v17h-13zM196 36h13v17h-13zM210 36h13v17h-13zM224 36h13v17h-13zM266 36h13v17h-13zM280 36h13v17h-13zM294 36h13v17h-13zM308 36h13v17h-13zM350 36h13v17h-13zM364 36h13v17h-13zM378 36h13v17h-13zM392 36h13v17h-13zM434 36h13v17h-13zM476 36h13v17h-13zM518 36h13v17h-13zM532 36h13v17h-13zM546 36h13v17h-13zM560 36h13v17h-13zM602 36h13v17h-13zM616 36h13v17h-13zM630 36h13v17h-13zM644 36h13v17h-13zM686 36h13v17h-13zM700 36h13v17h-13zM714 36h13v17h-13zM756 36h13v17h-13zM798 36h13v17h-13zM812 36h13v17h-13zM826 36h13v17h-13zM840 36h13v17h-13zM0 54h13v17h-13zM28 54h13v17h-13zM56 54h13v17h-13zM140 54h13v17h-13zM182 54h13v17h-13zM224 54h13v17h-13zM266 54h13v17h-13zM308 54h13v17h-13zM350 54h13v17h-13zM392 54h13v17h-13zM434 54h13v17h-13zM476 54h13v17h-13zM518 54h13v17h-13zM560 54h13v17h-13zM644 54h13v17h-13zM686 54h13v17h-13zM756 54h13v17h-13zM826 54h13v17h-13zM0 72h13v17h-13zM28 72h13v17h-13zM56 72h13v17h-13zM98 72h13v17h-13zM112 72h13v17h-13zM126 72h13v17h-13zM140 72h13v17h-13zM182 72h13v17h-13zM224 72h13v17h-13zM266 72h13v17h-13zM280 72h13v17h-13zM294 72h13v17h-13zM308 72h13v17h-13zM350 72h13v17h-13zM392 72h13v17h-13zM434 72h13v17h-13zM448 72h13v17h-13zM462 72h13v17h-13zM476 72h13v17h-13zM518 72h13v17h-13zM560 72h13v17h-13zM602 72h13v17h-13zM616 72h13v17h-13zM630 72h13v17h-13zM644 72h13v17h-13zM686 72h13v17h-13zM756 72h13v17h-13zM812 72h13v17h-13zM0 90h13v17h-13zM28 90h13v17h-13zM56 90h13v17h-13zM98 90h13v17h-13zM140 90h13v17h-13zM182 90h13v17h-13zM224 90h13v17h-13zM266 90h13v17h-13zM350 90h13v17h-13zM392 90h13v17h-13zM476 90h13v17h-13zM518 90h13v17h-13zM560 90h13v17h-13zM602 90h13v17h-13zM644 90h13v17h-13zM686 90h13v17h-13zM756 90h13v17h-13zM798 90h13v17h-13zM0 108h13v17h-13zM28 108h13v17h-13zM56 108h13v17h-13zM98 108h13v17h-13zM112 108h13v17h-13zM126 108h13v17h-13zM140 108h13v17h-13zM182 108h13v17h-13zM196 108h13v17h-13zM210 108h13v17h-13zM224 108h13v17h-13zM266 108h13v17h-13zM280 108h13v17h-13zM294 108h13v17h-13zM308 108h13v17h-13zM350 108h13v17h-13zM364 108h13v17h-13zM378 108h13v17h-13zM392 108h13v17h-13zM434 108h13v17h-13zM448 108h13v17h-13zM462 108h13v17h-13zM476 108h13v17h-13zM518 108h13v17h-13zM560 108h13v17h-13zM602 108h13v17h-13zM616 108h13v17h-13zM630 108h13v17h-13zM644 108h13v17h-13zM686 108h13v17h-13zM756 108h13v17h-13zM798 108h13v17h-13zM812 108h13v17h-13zM826 108h13v17h-13zM840 108h13v17h-13z"/>
+      </svg>
+
+      <div class="intro">
+        <p>madebyhafiz is the home of the things I build. I'm Hafiz, a Computer Engineering graduate from the National University of Singapore, and I make small, practical tools for Android and the web.</p>
+        <p>Much of it is built around everyday life in Singapore: PayNow, prayer times and public Islamic information. Every project below says what it does and what it is made with. <code class="inline">ls projects/</code> is the shortest way in.</p>
+      </div>
+
+      <section id="start">
+        <h2>Start here <a class="anchor" href="#start" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>Pick a project, read how it was made, or skip straight to contact.</p>
+        <pre class="code"><span class="cmd">cd</span> madebyhafiz/projects
+<span class="cmd">ls</span>
+<span class="dim">confirmpay  prayer-lockscreen  muis-assistant  sentryboard</span>
+<span class="cmd">open</span> <a href="https://confirmpay.link">confirmpay.link</a></pre>
+      </section>
+
+      <section id="how">
+        <h2>How I build <a class="anchor" href="#how" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <ul class="plain">
+          <li><b>Keep your data yours.</b> Sentryboard asks for no internet permission at all, and ConfirmPay never holds money or stores a bank login.</li>
+          <li><b>Cite it or say nothing.</b> The MUIS assistant links every claim to a public source, and says so when it cannot answer.</li>
+          <li><b>Measure it.</b> That assistant is scored against a 150-question eval set, so changes are tested instead of guessed.</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Projects <a class="anchor" href="#projects" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>Four things I have built, starting with the ones I like best.</p>
+
+        <div class="cards">
+          <a class="card" id="confirmpay" href="https://confirmpay.link">
+            <div class="card-head">
+              <span class="card-name">confirmpay<sup>↗</sup></span>
+              <span class="card-meta">web · live at confirmpay.link</span>
+            </div>
+            <p class="card-desc">Free, non-custodial PayNow requests and confirmations for Singapore nonprofits and small businesses. Money goes bank to bank, and ConfirmPay never holds it.</p>
+            <div class="tags"><code class="tag">TypeScript</code><code class="tag">React</code><code class="tag">Cloudflare</code><code class="tag">Supabase</code></div>
+          </a>
+
+          <div class="card" id="prayer-lockscreen">
+            <div class="card-head">
+              <span class="card-name">prayer-lockscreen</span>
+              <span class="card-meta">Android · v1.8.0</span>
+            </div>
+            <p class="card-desc">An Android live wallpaper that draws prayer times on your lock screen. It uses the official MUIS timetable for Singapore and works offline for about 34,000 other cities.</p>
+            <div class="tags"><code class="tag">Kotlin</code><code class="tag">Jetpack Compose</code><code class="tag">Adhan</code></div>
+          </div>
+
+          <div class="card" id="muis-assistant">
+            <div class="card-head">
+              <span class="card-name">muis-assistant</span>
+              <span class="card-meta">AI · demo on request</span>
+            </div>
+            <p class="card-desc">A citation-only assistant over public MUIS information, in English, Malay and Arabic. Every claim links to its source, and it says so when it cannot answer.</p>
+            <div class="tags"><code class="tag">Python</code><code class="tag">pgvector</code><code class="tag">FastAPI</code><code class="tag">Claude</code></div>
+            <p class="card-note">Independent project. Not built, endorsed or operated by MUIS, and not a source of religious rulings.</p>
+          </div>
+
+          <div class="card" id="sentryboard">
+            <div class="card-head">
+              <span class="card-name">sentryboard</span>
+              <span class="card-meta">Android · v6.7</span>
+            </div>
+            <p class="card-desc">A keyboard that deletes words from your own blocklist as you type, with a countdown-locked settings screen and uninstall protection. It has no internet permission and collects nothing.</p>
+            <div class="tags"><code class="tag">Android</code><code class="tag">fork of Simple Keyboard</code><code class="tag">Apache-2.0</code></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About <a class="anchor" href="#about" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>I'm Hafizuddin (Hafiz) Aminuddin. I studied Computer Engineering at the National University of Singapore, and I build small, practical software: Android apps, web services and AI tools, often for problems close to home.</p>
+        <div class="facts">
+          <dl>
+            <div class="fact"><dt>role</dt><dd>Computer Engineering graduate, NUS</dd></div>
+            <div class="fact"><dt>based</dt><dd>Singapore</dd></div>
+            <div class="fact"><dt>tools</dt><dd>TypeScript, Kotlin, Python, Postgres</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact <a class="anchor" href="#contact" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
+        <p>The best place to find me is GitHub.</p>
+        <pre class="code"><span class="dim">github  </span> <a href="https://github.com/hafizuddin-a">github.com/hafizuddin-a</a>
+<span class="dim">live    </span> <a href="https://confirmpay.link">confirmpay.link</a></pre>
+      </section>
+
+      <footer>
+        <span>© 2026 madebyhafiz</span>
+        <a href="#top">Back to top ↑</a>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  // Close the "On This Page" menu after picking a section.
+  document.querySelectorAll('.toc-menu a').forEach(function (a) {
+    a.addEventListener('click', function () { a.closest('details').removeAttribute('open'); });
+  });
+</script>
+</body>
+</html>
