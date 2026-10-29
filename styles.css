@@ -252,7 +252,18 @@ code.inline { font-size: 14.4px; padding: 2px 6px; }
   scroll-margin-top: 24px;
 }
 a.card:hover,
+.card-multi:hover,
 .card:target { background: var(--panel); border-color: var(--line-strong); }
+/* A card with two links: the title link stretches over the whole card, the
+   footer links sit above it so both stay clickable. */
+.card-multi { position: relative; }
+.card-link { color: inherit; text-decoration: none; }
+.card-link::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.card-link:focus-visible { outline: none; }
+.card-link:focus-visible::after { outline: 2px solid var(--link); outline-offset: 2px; }
+.card-links { position: relative; z-index: 1; margin: 14px 0 0; font-family: var(--mono); font-size: 12px; line-height: 18px; color: var(--dim); }
+.card-links a { color: var(--muted); }
+.card-links a:hover { color: var(--text); }
 .card-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; }
 .card-name { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 15px; color: var(--link); }
 .app-icon { flex: none; width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--line); object-fit: cover; }
