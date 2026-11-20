@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>madebyhafiz · AI engineer in Singapore</title>
-<meta name="description" content="Hafiz builds LLM applications that cite their sources and know when to abstain. Projects, experience and a case study of the MUIS assistant, scored on a 150-question eval set.">
+<title>madebyhafiz · Tools that benefit others</title>
+<meta name="description" content="Hafiz builds tools that benefit others: free PayNow for nonprofits, prayer times, a hadith notepad, a citation-only assistant and more. Projects, experience and case studies.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://hafiz.is-a.dev/">
-<meta property="og:title" content="madebyhafiz · AI engineer in Singapore">
-<meta property="og:description" content="I build LLM applications that cite their sources and know when to abstain.">
+<meta property="og:title" content="madebyhafiz · Tools that benefit others">
+<meta property="og:description" content="I build tools that benefit others: people, mosques, nonprofits and the small teams bigger software overlooks.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hafiz.is-a.dev/">
 <meta property="og:image" content="https://hafiz.is-a.dev/og.png">
@@ -43,14 +43,14 @@
       <a href="#projects"><span class="caret" aria-hidden="true">›</span>projects</a>
       <div class="sub">
         <a href="muis-assistant.html">muis-assistant</a>
+        <a href="#deen-note">deen-note</a>
         <a href="#fileswarden">fileswarden</a>
         <a href="#presstwo">presstwo</a>
         <a href="#confirmpay">confirmpay</a>
         <a href="#prayer-lockscreen">prayer-lockscreen</a>
         <a href="#bismillah">bismillah</a>
         <a href="#quran-resume">quran-resume</a>
-        <a href="#sentryboard">sentryboard</a>
-        <a href="#wordblock">wordblock</a>
+        <a href="#ping-pong">ping-pong</a>
         <a href="#gym-init">gym-init</a>
         <a href="expense-tracker.html">expense-tracker</a>
       </div>
@@ -105,8 +105,9 @@
         style="border:0;color-scheme:light"></iframe>
 
       <div class="intro">
-        <p class="lead">I build LLM applications that cite their sources and know when to abstain.</p>
-        <p>I'm Hafiz, a Computer Engineering graduate from the National University of Singapore. My main project is an assistant over public MUIS information, scored against a 150-question eval set in English, Malay and Arabic. I have also built a machine-learning prototype for Synapxe and LLM workflows for staff at Masjid Wak Tanjong.</p>
+        <p class="lead">I build tools that benefit others.</p>
+        <p>I'm Hafiz, a Computer Engineering graduate from the National University of Singapore. I make software for the people and organisations that bigger products overlook: a free way for nonprofits to confirm PayNow payments, prayer times on your lock screen, a notepad that brings in hadith and Quran verses with their sources, and an assistant that answers from public information and says when it does not know.</p>
+        <p>Most of it is free, much of it is open source, and each project below says what it does and what it is made with.</p>
       </div>
 
       <div>
@@ -124,7 +125,7 @@
         <p>Read the case study for the project that best shows how I work, or browse everything else.</p>
         <pre class="code"><span class="cmd">cd</span> madebyhafiz/projects
 <span class="cmd">ls</span>
-<span class="dim">muis-assistant  fileswarden  presstwo  confirmpay  prayer-lockscreen  bismillah  quran-resume  sentryboard  wordblock  gym-init  expense-tracker</span>
+<span class="dim">muis-assistant  deen-note  fileswarden  presstwo  confirmpay  prayer-lockscreen  bismillah  quran-resume  ping-pong  gym-init  expense-tracker</span>
 <span class="cmd">open</span> <a href="muis-assistant.html">muis-assistant/case-study</a></pre>
       </section>
 
@@ -141,6 +142,16 @@
             <p class="card-desc">A citation-only assistant over public MUIS information, in English, Malay and Arabic. Every claim links to its source, and it says so when it cannot answer. Evaluated on 150 questions with the results and the mistakes written up.</p>
             <div class="tags"><code class="tag">Python</code><code class="tag">pgvector</code><code class="tag">FastAPI</code><code class="tag">Claude</code><code class="tag">evals</code></div>
             <p class="card-note">Independent project. Not built, endorsed or operated by MUIS, and not a source of religious rulings.</p>
+          </a>
+
+          <a class="card" id="deen-note" href="https://hafizuddin-a.github.io/">
+            <div class="card-head">
+              <span class="card-name"><img class="app-icon" src="icons/deen-note.png" alt="" width="28" height="28"><span>deen-note<sup>↗</sup></span></span>
+              <span class="card-meta">web app · installable</span>
+            </div>
+            <p class="card-desc">A quiet markdown notepad with two extra tricks. Type @hadith and a few words to pick a hadith, or @quran and a place like 2:255 to bring in the verses in Arabic with the English translation. Search runs in your browser across tens of thousands of hadith, and every result links back to its source page.</p>
+            <div class="tags"><code class="tag">React</code><code class="tag">TypeScript</code><code class="tag">Tiptap</code><code class="tag">PWA</code></div>
+            <p class="card-note">Hadith text is retrieved from published collections, never generated. Always check the linked source.</p>
           </a>
 
           <a class="card" id="fileswarden" href="https://fileswarden-site.hello-hafiz.workers.dev">
@@ -199,6 +210,16 @@
             <p class="card-links"><a href="https://chromewebstore.google.com/detail/quran-resume/mkmhldkeenlbbmhgpcomibpnajbmfkje">Chrome Web Store</a> · <a href="https://github.com/hafizuddin-a/quran-resume">GitHub</a></p>
           </div>
 
+          <a class="card" id="ping-pong" href="https://github.com/hafizuddin-a/ping-pong-menubar">
+            <div class="card-head">
+              <span class="card-name"><img class="app-icon" src="icons/ping.png" alt="" width="28" height="28"><span>ping-pong<sup>↗</sup></span></span>
+              <span class="card-meta">macOS · v1.0.6</span>
+            </div>
+            <p class="card-desc">A tiny ping-pong game that lives in your Mac's menu bar. Click the icon, play the bot with the arrow keys, click away. It uses Liquid Glass on macOS 26, needs no account and makes no network requests.</p>
+            <div class="tags"><code class="tag">Swift</code><code class="tag">macOS</code><code class="tag">MIT</code></div>
+          </a>
+
+          <!-- TEMPORARILY HIDDEN (restore by deleting this comment wrapper):
           <a class="card" id="sentryboard" href="https://github.com/hafizuddin-a/sentryboard">
             <div class="card-head">
               <span class="card-name"><img class="app-icon" src="icons/sentryboard.png" alt="" width="28" height="28"><span>sentryboard<sup>↗</sup></span></span>
@@ -216,6 +237,7 @@
             <p class="card-desc">Deletes the words you choose the moment you finish typing them, in any Mac app. Matching ignores case, accents and apostrophes and catches letter swaps like sh@t. A settings lock makes removing words wait out a countdown. No network access.</p>
             <div class="tags"><code class="tag">Swift</code><code class="tag">macOS</code><code class="tag">MIT</code></div>
           </a>
+          -->
 
           <a class="card" id="gym-init" href="https://github.com/hafizuddin-a/gym-init">
             <div class="card-head">
