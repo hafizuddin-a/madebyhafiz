@@ -42,7 +42,7 @@
       <a href="#top" aria-current="page">hafiz</a>
       <a href="#projects"><span class="caret" aria-hidden="true">›</span>projects</a>
       <div class="sub">
-        <a href="muis-assistant.html">muis-assistant</a>
+        <a href="rag-assistant-muis.html">rag-assistant-muis</a>
         <a href="#deen-note">deen-note</a>
         <a href="#fileswarden">fileswarden</a>
         <a href="#presstwo">presstwo</a>
@@ -110,23 +110,13 @@
         <p>Most of it is free, much of it is open source, and each project below says what it does and what it is made with.</p>
       </div>
 
-      <div>
-        <div class="stats">
-          <div class="stat"><b>0.977</b><span>citation hit rate</span></div>
-          <div class="stat"><b>150</b><span>eval cases in EN, MS and AR</span></div>
-          <div class="stat"><b>2.3 s</b><span>median answer time</span></div>
-          <div class="stat"><b>270</b><span>automated tests</span></div>
-        </div>
-        <p class="note" style="margin-top: 10px;">MUIS assistant, current build. The questions are written by me and not independently reviewed. <a href="muis-assistant.html#evaluation">See the limits</a>.</p>
-      </div>
-
       <section id="start">
         <h2>Start here <a class="anchor" href="#start" aria-label="Link to this section"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg></a></h2>
-        <p>Read the case study for the project that best shows how I work, or browse everything else.</p>
+        <p>Open Deen Note to see one of my tools in action, or browse everything else.</p>
         <pre class="code"><span class="cmd">cd</span> madebyhafiz/projects
 <span class="cmd">ls</span>
-<span class="dim">muis-assistant  deen-note  fileswarden  presstwo  confirmpay  prayer-lockscreen  bismillah  quran-resume  ping-pong  gym-init  expense-tracker</span>
-<span class="cmd">open</span> <a href="muis-assistant.html">muis-assistant/case-study</a></pre>
+<span class="dim">rag-assistant-muis  deen-note  fileswarden  presstwo  confirmpay  prayer-lockscreen  bismillah  quran-resume  ping-pong  gym-init  expense-tracker</span>
+<span class="cmd">open</span> <a href="https://hafizuddin-a.github.io/">deen-note</a></pre>
       </section>
 
       <section id="projects">
@@ -134,9 +124,9 @@
         <p>The AI work comes first, then the other things I have built.</p>
 
         <div class="cards">
-          <a class="card" id="muis-assistant" href="muis-assistant.html">
+          <a class="card" id="rag-assistant-muis" href="rag-assistant-muis.html">
             <div class="card-head">
-              <span class="card-name"><img class="app-icon" src="icons/muis-assistant.svg" alt="" width="28" height="28"><span>muis-assistant<sup>→</sup></span></span>
+              <span class="card-name"><img class="app-icon" src="icons/rag-assistant-muis.svg" alt="" width="28" height="28"><span>rag-assistant-muis<sup>→</sup></span></span>
               <span class="card-meta">AI · read the case study</span>
             </div>
             <p class="card-desc">A citation-only assistant over public MUIS information, in English, Malay and Arabic. Every claim links to its source, and it says so when it cannot answer. Evaluated on 150 questions with the results and the mistakes written up.</p>
@@ -149,7 +139,7 @@
               <span class="card-name"><img class="app-icon" src="icons/deen-note.png" alt="" width="28" height="28"><span>deen-note<sup>↗</sup></span></span>
               <span class="card-meta">web app · installable</span>
             </div>
-            <p class="card-desc">A quiet markdown notepad with two extra tricks. Type @hadith and a few words to pick a hadith, or @quran and a place like 2:255 to bring in the verses in Arabic with the English translation. Search runs in your browser across tens of thousands of hadith, and every result links back to its source page.</p>
+            <p class="card-desc">A markdown notepad with two extra tricks. Type @hadith and a few words to pick a hadith, or @quran and a place like 2:255 to bring in the verses in Arabic with the English translation. Search runs in your browser across tens of thousands of hadith, and every result links back to its source page.</p>
             <div class="tags"><code class="tag">React</code><code class="tag">TypeScript</code><code class="tag">Tiptap</code><code class="tag">PWA</code></div>
             <p class="card-note">Hadith text is retrieved from published collections, never generated. Always check the linked source.</p>
           </a>
