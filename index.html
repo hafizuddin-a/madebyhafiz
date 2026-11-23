@@ -11,10 +11,14 @@
 <meta property="og:description" content="I build tools that benefit others: people, mosques, nonprofits and the small teams bigger software overlooks.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hafiz.is-a.dev/">
-<meta property="og:image" content="https://hafiz.is-a.dev/og.png">
+<meta property="og:image" content="https://hafiz.is-a.dev/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="madebyhafiz: tools that benefit others">
+<meta property="og:site_name" content="madebyhafiz">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hafiz.is-a.dev/og.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,9 +48,9 @@
       <div class="sub">
         <a href="rag-assistant-muis.html">rag-assistant-muis</a>
         <a href="#deen-note">deen-note</a>
+        <a href="#confirmpay">confirmpay</a>
         <a href="#fileswarden">fileswarden</a>
         <a href="#presstwo">presstwo</a>
-        <a href="#confirmpay">confirmpay</a>
         <a href="#prayer-lockscreen">prayer-lockscreen</a>
         <a href="#bismillah">bismillah</a>
         <a href="#quran-resume">quran-resume</a>
@@ -115,7 +119,7 @@
         <p>Open Deen Note to see one of my tools in action, or browse everything else.</p>
         <pre class="code"><span class="cmd">cd</span> madebyhafiz/projects
 <span class="cmd">ls</span>
-<span class="dim">rag-assistant-muis  deen-note  fileswarden  presstwo  confirmpay  prayer-lockscreen  bismillah  quran-resume  ping-pong  gym-init  expense-tracker</span>
+<span class="dim">rag-assistant-muis  deen-note  confirmpay  fileswarden  presstwo  prayer-lockscreen  bismillah  quran-resume  ping-pong  gym-init  expense-tracker</span>
 <span class="cmd">open</span> <a href="https://hafizuddin-a.github.io/">deen-note</a></pre>
       </section>
 
@@ -144,6 +148,15 @@
             <p class="card-note">Hadith text is retrieved from published collections, never generated. Always check the linked source.</p>
           </a>
 
+          <a class="card" id="confirmpay" href="https://confirmpay.link">
+            <div class="card-head">
+              <span class="card-name"><img class="app-icon" src="icons/confirmpay.png" alt="" width="28" height="28"><span>confirmpay<sup>↗</sup></span></span>
+              <span class="card-meta">web · live at confirmpay.link</span>
+            </div>
+            <p class="card-desc">Free, non-custodial PayNow requests and confirmations for Singapore nonprofits and small businesses. Money goes bank to bank, and ConfirmPay never holds it. It confirms payments by parsing bank emails with plain regex instead of an LLM, so the logic is deterministic.</p>
+            <div class="tags"><code class="tag">TypeScript</code><code class="tag">React</code><code class="tag">Cloudflare</code><code class="tag">Supabase</code></div>
+          </a>
+
           <a class="card" id="fileswarden" href="https://fileswarden-site.hello-hafiz.workers.dev">
             <div class="card-head">
               <span class="card-name"><img class="app-icon" src="icons/fileswarden.svg" alt="" width="28" height="28"><span>fileswarden<sup>↗</sup></span></span>
@@ -161,15 +174,6 @@
             </div>
             <p class="card-desc">A service that phones a list of people who agreed to be called, asks one question and reads one keypad digit. It can poll everyone, or call down the list and stop at the first yes. It runs on Cloudflare's free tier, with Telnyx for the calls.</p>
             <div class="tags"><code class="tag">TypeScript</code><code class="tag">Cloudflare Workers</code><code class="tag">D1</code><code class="tag">Telnyx</code></div>
-          </a>
-
-          <a class="card" id="confirmpay" href="https://confirmpay.link">
-            <div class="card-head">
-              <span class="card-name"><img class="app-icon" src="icons/confirmpay.png" alt="" width="28" height="28"><span>confirmpay<sup>↗</sup></span></span>
-              <span class="card-meta">web · live at confirmpay.link</span>
-            </div>
-            <p class="card-desc">Free, non-custodial PayNow requests and confirmations for Singapore nonprofits and small businesses. Money goes bank to bank, and ConfirmPay never holds it. It confirms payments by parsing bank emails with plain regex instead of an LLM, so the logic is deterministic.</p>
-            <div class="tags"><code class="tag">TypeScript</code><code class="tag">React</code><code class="tag">Cloudflare</code><code class="tag">Supabase</code></div>
           </a>
 
           <a class="card" id="prayer-lockscreen" href="https://github.com/hafizuddin-a/prayer-lockscreen">
